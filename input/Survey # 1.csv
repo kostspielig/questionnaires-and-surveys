@@ -1,0 +1,71 @@
+[Filename Options],[Value],[Value Format],[Notes]
+Output Filename:,output Survey # 1.csv,*.csv,must be in folder 'output' and end in '.cvs' (ex. output.csv) (defualt/blank is [input filename]_output.csv)
+CSS Filename:,style1.css,*.css,must end in '.css' and be in css folder (may not combine well with html properties below) (ex. style.css)
+Thank You Page:,,URL,will create defualt thank you page with link to survey chooser page if left blank (ex. http://localhost/experiments/thankyoupage.php)
+,,,
+[Survey Table Properties],[Value],[Value Format],"[Notes]  (all htlml properties can be left blank, so they can be instead be edited better through the css file)"
+Questions Per Page:,10,non-negative integer,0 (or empty) means all questions on one page
+Width:,200,pixels,
+Alignment:,center,"""left"", ""center"", or ""right""","defualt/blank is ""center"" (data in table defualt/blank is ""left"")"
+Border Thickness:,,pixels,
+Cell Padding:,,pixels,space inside table data
+Cell Spacing:,,pixels,space outside table data
+,,,
+[Header Properties],[Value],[Value Format],[Notes]
+Custom Header:,,HTML,"this ignores ALL other header options if used! (ex. ""<tr><th>My Survey</th><tr>"")"
+Left Title:,Survey # 1,Text/HTML,making both headers blank will remove the header
+Right Title:,Least Acceptable &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Most Acceptable,Text/HTML,can use html tags
+Alignment:,,"""left"", ""center"", or ""right""","default/blank is ""left"""
+Border Thickness:,,pixels,
+Padding:,,pixels,space inside table data
+Spacing:,,pixels,space outside table data
+,,,
+[Survey Left Column Properties],[Value],[Value Format],[Notes]
+Width:,,pixels,
+Alignment:,,"""left"", ""center"", or ""right""","default/blank is ""left"""
+Border Thickness:,,pixels,
+Padding:,,pixels,space inside table data
+Spacing:,,pixels,space outside table data
+,,,
+[Survey Right Column Properties],[Value],[Value Format],[Notes]
+Width:,,pixels,
+Alignment:,,"""left"", ""center"", or ""right""","options are left, right, or center. Default/blank is ""left"""
+Border Thickness:,,pixels,
+Padding:,,pixels,space inside table data
+Spacing:,,pixels,space outside table data
+,,,
+[Pagination Text Properties],[Value],[Value Format],[Notes]
+View:,,"""on"" or ""off""","defualt/blank is ""on"", if ""off"" then it will ignore other pagination options"
+Alignment:,,"""left"", ""center"", or ""right""",defualt/blank is center
+Position:,,"""top"" or ""bottom""",defualt/blank is bottom
+,,,
+[Pagination Buttons Table Properties],[Value],[Value Format],[Notes]
+Width:,,pixels,"defualt is ""170"" per button"
+Alignment:,,"""left"", ""center"", or ""right""",defualt/blank is center
+Border Thickness:,,pixels,defualt/blank is 0
+Padding:,,pixels,
+Spacing:,,pixels,
+,,,
+[Personal Info],[Value] (blank is off) (all blank skips entering user info),[Value Format],[Notes]
+Name,on,"""on"" or ""off""",
+Age,on,"""on"" or ""off""",
+Gender,on,"""on"" or ""off""",will create a Female/Male dropbown
+Major,,"""on"" or ""off""",
+Email,,"""on"" or ""off""",
+any additional questions on this row sperated by column =>,,,
+,,,
+[Item Code],[Item],"[Response Type] (t for text box, integer for selection 1-integer)",
+G.22,What do you say we stop here?,7,
+WH.d.isl.lg.14,"What does the girl, wonder whether Heather saw?",7,
+G.19,He's not half the doctor you are.,7,
+ILL.rep.01,On Sundays more lawyers go to the gym than I do.,7,
+RC.01,What does your friend date the girl that sewed?,7,
+B.10,"I read a book yesterday, and several of them were quite interesting.",7,
+Rel.subj.biased.08,The broker that advised the governor benefited from the legislation passed at the end of the year.,7,
+CE.vp2.16,The term paper that the student who the professor had accused of plagiarim was due in less than two hours.,7,
+G.17,You'd better go if you want to miss the rush hour traffic.,7,
+WH.d.non.lg.15,What does the student think that David started?,7,
+Rel.subj.neutral.08,The doctor that ignored the judged watched the movie about Columbian drug dealers.,7,
+G.12,What do you think you could have done to make it better?,7,
+NP.d.isl.sh.16,Who heard the rumor that Gene sold my house?,7,
+B.29,Was Janet's bewaring of the dog necessary?,7,
