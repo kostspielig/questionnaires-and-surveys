@@ -1,0 +1,92 @@
+@charset "utf-8";
+/* CSS Document */
+
+p {
+	font-weight: bold;
+	color: black;
+}
+
+body {
+	font-family: Arial;
+	font-style: normal;
+}
+
+h1#errorMessage {
+	color: red;
+}
+
+table#PHPSurveyGenerator_Survey_Table {
+	border-width: 0px 0px 0px 0px;
+	border-spacing: 5px;
+	border-style: none none none none;
+	border-color: black black black black;
+	border-collapse: separate;
+	background-color: white;
+	width: 1300px;
+}
+
+tr#PHPSurveyGenerator_Survey_TableHeader {
+	border-width: 0px 0px 0px 0px;
+	padding: 3px 0px 3px 0px;
+	border-style: inset inset inset inset;
+	border-color: grey grey grey grey;
+	background-color: white;
+}
+
+th#PHPSurveyGenerator_Survey_LeftTableHeader {
+}
+
+th#PHPSurveyGenerator_Survey_RightTableHeader {
+	border-top: 2px solid;
+	border-right: 2px solid;
+	border-bottom: 2px solid;
+	border-left: 2px solid;
+}
+
+tr#PHPSurveyGenerator_Survey_TableRow {
+}
+
+td#PHPSurveyGenerator_Survey_LeftTableColumn {
+	border-width: 0px 0px 0px 0px;
+	padding: 10px 5px 10px 5px;
+	border-style: inset inset inset inset;
+	border-color: grey grey grey grey;
+	background-color: white;
+	min-width: 350px;
+}
+
+td#PHPSurveyGenerator_Survey_RightTableColumn {
+}
+
+table#PHPSurveyGenerator_Survey_PageButtons {
+}
+
+p#PHPSurveyGenerator_Survey_PageNumbers {
+}
+
+table#PHPSurveyGenerator_UserInfo_Table {
+	border-width: 0px 0px 0px 0px;
+	border-spacing: 5px;
+	border-style: none none none none;
+	border-color: black black black black;
+	border-collapse: separate;
+	background-color: white;
+	width: 500px;
+}
+
+tr#PHPSurveyGenerator_UserInfo_TableRow {
+	border-width: 0px 0px 0px 0px;
+	padding: 10px 5px 10px 5px;
+	border-style: inset inset inset inset;
+	border-color: grey grey grey grey;
+	background-color: white;
+	min-width: 250px;
+}
+
+td#PHPSurveyGenerator_UserInfo_RightTableColumn {
+}
+
+td#PHPSurveyGenerator_UserInfo_LeftTableColumn {
+}
+
+
