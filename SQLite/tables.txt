@@ -1,0 +1,9 @@
+CREATE TABLE admin (id TEXT PRIMARY KEY, password TEXT);
+CREATE TABLE experiment(exp_id INT PRIMARY KEY, name TEXT);
+CREATE TABLE survey(exp_id INT PRIMARY KEY, sur_id INT PRIMARY KEY);
+CREATE TABLE question(exp_id INT PRIMARY KEY, sur_id INT PRIMARY KEY, que_id INT PRIMARY KEY, name TEXT);
+CREATE TABLE answer();
+CREATE TABLE participant();
+CREATE TABLE textBox(op TEXT);
+CREATE TABLE yesNoRadio(op INT);
+CREATE TABLE radioBox();
