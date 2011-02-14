@@ -1,12 +1,12 @@
 CREATE TABLE administrator (
-	admin_id INTEGER PRIMARY KEY, 
+	admin_id TEXT PRIMARY KEY, 
 	password TEXT
 );
 
 CREATE TABLE experiment (
 	exp_id INT PRIMARY KEY, 
 	name TEXT,
-	admin_id INT NOT NULL,
+	admin_id TEXT NOT NULL,
 	FOREIGN KEY (admin_id) REFERENCES administrator(admin_id)
 		ON DELETE CASCADE
 );
