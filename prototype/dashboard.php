@@ -30,9 +30,9 @@
 		<h1 id="head">COGNITI<FONT COLOR="#FFFAA4">VE</FONT><font style="font-size:120%"> S</font>UR<FONT COLOR="#FFFAA4">VEYS</FONT></h1>
 		
 		<ul id="navigation">
-			<li><span class="active">Home</span></li>
-			<li><a href="#">News</a></li>
-			<li><a href="#">Users</a></li>
+			<li><span class="active">Admin</span></li>
+			<li><a href="template.html">About</a></li>
+			<li><a href="#">Other</a></li>
 		</ul> 
 		
 			<div id="content" class="container_16 clearfix">

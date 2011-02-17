@@ -16,7 +16,7 @@
 		<ul id="navigation">
 			<li><a href="#">Admin</a></li>
 			<li><span class="active">experiments</span></li>
-			<li><a href="#">About</a></li>
+			<li><a href="template.html">About</a></li>
 			<li><a href="#">other</a></li>
 		</ul>
 		
