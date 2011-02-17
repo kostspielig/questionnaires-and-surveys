@@ -32,7 +32,7 @@
 		<ul id="navigation">
 			<li><span class="active">Admin</span></li>
 			<li><a href="template.html">About</a></li>
-			<li><a href="#">Other</a></li>
+			<li><a href="survey.html">Other</a></li>
 		</ul> 
 		
 			<div id="content" class="container_16 clearfix">
@@ -56,20 +56,6 @@
 							$survey->printExperiments(0);
 							echo '</tbody> </table>';
 							$survey->close();?>
-					</div>
-					<div class="box">
-						<h2>Messages</h2>
-						<div class="utils">
-							<a href="#">Inbox</a>
-						</div>
-						<p class="center">Have have <a href="#">10</a> unread messages.</p>
-					</div>
-					<div class="box">
-						<h2>CMS Updates</h2>
-						<div class="utils">
-							<a href="#">Check</a>
-						</div>
-						<p class="center">You are running the latest version.</p>
 					</div>
 				</div>
 				<div class="grid_6">
