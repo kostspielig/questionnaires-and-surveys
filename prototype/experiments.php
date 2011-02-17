@@ -14,7 +14,7 @@
 		<h1 id="head">COGNITI<FONT COLOR="#FFFAA4">VE</FONT><font style="font-size:120%"> S</font>UR<FONT COLOR="#FFFAA4">VEYS</FONT></h1>
 		
 		<ul id="navigation">
-			<li><a href="#">Admin</a></li>
+			<li><a href="dashboard.php">Admin</a></li>
 			<li><span class="active">experiments</span></li>
 			<li><a href="template.html">About</a></li>
 			<li><a href="#">other</a></li>

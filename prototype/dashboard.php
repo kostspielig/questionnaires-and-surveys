@@ -42,7 +42,7 @@
 						<div class="utils">
 							<a href="about.html">View More</a>
 						</div>
-						<p><strong>User : </strong> John Sprouse<br /><strong>Date : </strong> <?php echo date("Y.m.d") ?> </b></p>
+						<p><br/><strong>User : </strong> John Sprouse<br/><br/><strong>Date : </strong> <?php echo date("Y.m.d") ?> </b></p><br/>
 					</div>
 					<div class="box">
 						<h2>Experiments</h2>
@@ -66,27 +66,19 @@
 						</div>
 						<table>
 							<tbody>
-								<tr>
-									<td>1 Post</td>
-									<td>2 Comments</td>
-								</tr>
-								<tr>
-									<td>1 Page</td>
-									<td>2 Approved</td>
-								</tr>
-								<tr>
-									<td>1 Categories</td>
-									<td>0 Pending</td>
-								</tr>
-								<tr>
-									<td>0 Tags</td>
-									<td>0 Spam</td>
-								</tr>
-							</tbody>
+							<tr> <td>
+							<input type="file" name="upload_file"/> </td></tr>
+							
+							<tr><td><input type="submit" 
+									name="upload_exp" 
+									id="uploadbutton" 
+									value="Upload"
+									onclick="uploadExperiment()" />	</td>									
+							</tbody> </tr>
 						</table>
 					</div>
 					<div class="box">
-						<h2>Quick Post</h2>
+						<h2>Notes</h2>
 						<div class="utils">
 							<a href="#">Advanced</a>
 						</div>
@@ -114,11 +106,11 @@
 						<table>
 							<tbody>
 								<tr>
-									<td>News</td>
+									<td>Experiments</td>
 									<td>+ 120%</td>
 								</tr>
 								<tr>
-									<td>Downloads</td>
+									<td>Surveys</td>
 									<td>+ 220%</td>
 								</tr>
 								<tr>
@@ -204,9 +196,8 @@
 							</tbody>
 						</table>
 						<ol>
-							<li>Draft contract template.</li>
-							<li>Draft invoice template.</li>
-							<li>Draft business cards.</li>
+							<li>Draft contract.</li>
+							<li>Draft invoice.</li>
 						</ol>
 					</div>
 				</div>
