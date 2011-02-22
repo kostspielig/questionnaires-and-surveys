@@ -10,7 +10,7 @@ $survey->open();
 //$survey->insert("administrator","'john', 'admin'");
 //$survey->insert("experiment","NULL, 'experimentA', 'john'");
 //$survey->insert("experiment","NULL, 'experimentB', 'john'");
-$survey->insert("survey", "NULL, 1, ");
+//$survey->insert("survey", "NULL, 1, ");
 $survey->printExperiments();
 $survey->close();
 ?>

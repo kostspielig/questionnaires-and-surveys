@@ -32,29 +32,14 @@
 		<?php include '../includes/navigationBar.php' ?>
 		
 			<div id="content" class="container_16 clearfix">
-				<div class="grid_5">
+				<div class="grid_6">
 					<div class="box">
 						<h2>Info</h2>
 						<div class="utils">
 							<a href="about.html">View More</a>
 						</div>
-						<p><br/><strong>User : </strong> John Sprouse<br/><br/><strong>Date : </strong> <?php echo date("Y.m.d") ?> </b></p><br/>
+						<p><br/><strong>User : </strong> Professor Jon Sprouse<br/><br/><strong>Date : </strong> <?php echo date("Y.m.d") ?> </b></p><br/>
 					</div>
-					<div class="box">
-						<h2>Experiments</h2>
-						<div class="utils">
-							<a href="experiments.php">View More</a>
-						</div>
-						<?php require_once '../classes/surveyDB.php';
-							$survey = new surveyDB();
-							$survey->open(); 
-							echo '<table> <tbody> <tr>';
-							$survey->printExperiments(0);
-							echo '</tbody> </table>';
-							$survey->close();?>
-					</div>
-				</div>
-				<div class="grid_6">
 					<div class="box">
 						<h2>Upload Experiment</h2>
 						<div class="utils">
@@ -73,128 +58,21 @@
 							</tbody> </tr>
 						</table>
 					</div>
-					<div class="box">
-						<h2>Notes</h2>
-						<div class="utils">
-							<a href="#">Advanced</a>
-						</div>
-						<form action="#" method="post">
-							<p>
-								<label for="title">Title <small>Alpha-numeric characters only.</small> </label>
-								<input type="text" name="title" />
-							</p>
-							<p>
-								<label for="post">Post <small>Parsed by Markdown.</small> </label>
-								<textarea name="post"></textarea>
-							</p>
-							<p>
-								<input type="submit" value="post" />
-							</p>
-						</form>
-					</div>
 				</div>
-				<div class="grid_5">
+				<div class="grid_10">
+					
 					<div class="box">
-						<h2>Statistics</h2>
+						<h2>Experiments</h2>
 						<div class="utils">
-							<a href="#">View More</a>
+							<a href="experiments.php">View More</a>
 						</div>
-						<table>
-							<tbody>
-								<tr>
-									<td>Experiments</td>
-									<td>+ 120%</td>
-								</tr>
-								<tr>
-									<td>Surveys</td>
-									<td>+ 220%</td>
-								</tr>
-								<tr>
-									<td>Users</td>
-									<td>- 10%</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<div class="box">
-						<h2>Schedule</h2>
-						<div class="utils">
-							<a href="#">View More</a>
-						</div>
-						<table class="date">
-							<caption><a href="#">Prev</a> November 2009 <a href="#">Next</a> </caption>
-							<thead>
-								<tr>
-									<th>Mon</th>
-									<th>Tue</th>
-									<th>Wed</th>
-									<th>Thu</th>
-									<th>Fri</th>
-									<th>Sat</th>
-									<th>Sun</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td><a href="#">1</a></td>
-								</tr>
-								<tr>
-									<td><a href="#">2</a></td>
-									<td><a href="#">3</a></td>
-									<td><a href="#">4</a></td>
-									<td><a href="#">5</a></td>
-									<td><a href="#">6</a></td>
-									<td><a href="#">7</a></td>
-									<td><a href="#">8</a></td>
-								</tr>
-								<tr>
-									<td><a href="#">9</a></td>
-									<td><a href="#">10</a></td>
-									<td><a href="#" class="active">11</a></td>
-									<td><a href="#">12</a></td>
-									<td><a href="#">13</a></td>
-									<td><a href="#">14</a></td>
-									<td><a href="#">15</a></td>
-								</tr>
-								<tr>
-									<td><a href="#">16</a></td>
-									<td><a href="#">17</a></td>
-									<td><a href="#">18</a></td>
-									<td><a href="#">19</a></td>
-									<td><a href="#">20</a></td>
-									<td><a href="#">21</a></td>
-									<td><a href="#">22</a></td>
-								</tr>
-								<tr>
-									<td><a href="#">23</a></td>
-									<td><a href="#">24</a></td>
-									<td><a href="#">25</a></td>
-									<td><a href="#">26</a></td>
-									<td><a href="#">27</a></td>
-									<td><a href="#">28</a></td>
-									<td><a href="#">29</a></td>
-								</tr>
-								<tr>
-									<td><a href="#">30</a></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							</tbody>
-						</table>
-						<ol>
-							<li>Draft contract.</li>
-							<li>Draft invoice.</li>
-						</ol>
+						<?php require_once '../classes/surveyDB.php';
+							$survey = new surveyDB();
+							$survey->open(); 
+							echo '<table> <tbody> <tr>';
+							$survey->printExperiments(0);
+							echo '</tbody> </table>';
+							$survey->close();?>
 					</div>
 				</div>
 			</div>
