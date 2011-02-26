@@ -14,9 +14,11 @@ session_start();
 
 <?php
 
-	$password = $_POST["password"];
-	
-	if($password === 'admin') {
+	require_once '..\classes\Model.php';
+	$pass = $_POST["password"];
+	$name  = $_POST["login"];
+	$model = new Model();
+	if($model->checkUser($name,$pass)) {
 		echo 'Login Successful';
 		//log in and re-direct to admin panel.
 		//include("admin_page.php");
@@ -25,6 +27,7 @@ session_start();
 	}
 	else {
 		echo 'Login Failed';
+		include 'login.php';
 	}
 	
 ?>

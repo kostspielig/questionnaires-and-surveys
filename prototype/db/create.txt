@@ -23,11 +23,48 @@ CREATE TABLE survey (
 	sur_id INTEGER PRIMARY KEY, 
 	exp_id INTEGER NOT NULL,
 	name TEXT, 
+	pseudo_random_width NUMERIC,
+	-- Filename Options
+	output_filename TEXT,
+	css_filename TEXT,
+	thank_you_page TEXT,
+	-- Table properties
 	questions_per_page NUMERIC, 
+	table_width NUMERIC,
+	table_alignment TEXT,
 	table_border_thickness NUMERIC, 
 	table_cell_padding NUMERIC, 
 	table_cell_spacing TEXT, 
-	table_width TEXT,
+	-- Header Properties
+	custom_header TEXT,
+	header_left_title TEXT,
+	header_right_title TEXT,
+	header_alignment TEXT,
+	header_border_thickness NUMERIC,
+	header_padding NUMERIC,
+	header_spacing NUMERIC,
+	-- Survey Left Column Properties
+	left_column_width NUMERIC,
+	left_column_alignment TEXT,
+	left_column_border_thickness NUMERIC,
+	left_column_padding NUMERIC,
+	left_column_spacing NUMERIC,
+	-- Survey Right Column Properties
+	right_column_width NUMERIC,
+	right_column_alignment TEXT,
+	right_column_border_thickness NUMERIC,
+	right_column_padding NUMERIC,
+	right_column_spacing NUMERIC,
+	-- Pagination Text properties
+	pagination_text_view TEXT,
+	pagination_text_Alignment TEXT,
+	pagination_text_position TEXT,
+	-- Pagination Buttons Table
+	pagination_buttons_width NUMERIC,
+	pagination_buttons_alignment TEXT,
+	pagination_buttons_border_thickness NUMERIC,
+	pagination_buttons_padding NUMERIC,
+	pagination_buttons_spacing NUMERIC,
 	FOREIGN KEY(exp_id) REFERENCES experiment(exp_id)
 		ON DELETE CASCADE
 );
