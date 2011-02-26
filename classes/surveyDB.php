@@ -38,5 +38,19 @@ class surveyDB
 			echo ( ($type == "0") ? '</tr>' : '<td><a href="#" class="edit">Edit</a></td>  <td><a href="#" class="delete">Delete</a></td></tr>');
 		}		
     } 
+	
+	public function	getExperiments(){
+		$result = sqlite_query($this->dbhandle,"SELECT * FROM experiment");
+		if (!$result) die("Cannot execute query.");
+		return $result;
+	}
+	
+	//1 TRUE 0 FALSE
+	public function getUser ($name, $password) {
+		$result = sqlite_query($this->dbhandle, "SELECT * FROM administrator WHERE admin_id='$name' AND password='$password'");
+		if (!$result) die ("Cannot execute query.");
+		$row = sqlite_fetch_array($result, SQLITE_ASSOC);
+		return ($row!=NULL)? 1:0;
+	}
 }
 ?>
