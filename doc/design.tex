@@ -7,11 +7,12 @@
 
 \usepackage{kostspielig}
 
+\usepackage{pifont}
 
 \newcommand{\todo}[1]{\textcolor{red}{\textbf{TODO: #1}}}
 
 
-\title{Design Iteration 3}
+\title{Design Iteration 4}
 \subtitle{Open-source web-app for questionnaires and surveys}
 \date{Winter 2011}
 \location{University of California Irvine}
@@ -44,62 +45,139 @@ This document describes the design layout for the Survey Generator program by Te
 \section{ Temporary Data Structures}
 
 This will need to import and export XML files in the form XLSX as well as CSV files. These will
-
 only be temporary since they are being converted into and out of the SQLite database.
+\chapter{Design Pattern : MVC}
+For our application we decided to use the \emph{Model View Controller} pattern. This decision was made based on the fact that this pattern is the most used for today's world web applications.
+\vskip 1cm
+\begin{figure}[h!]
+  \begin{center}
+   \includegraphics[width=10.5cm]{pics/mvc1.png}
+  \end{center}
+\caption{MVC Collaboration Diagram.}
+\end{figure}
+
+\vskip 1.5cm
+The \emph{MVC} pattern divides our application in three main modules:\\
+\begin{description}
+\item[Model]  \ding{32} \\ \\
+This module is responsible for managing the data. It is responsible for storing and retrieving information from the database, in our case \emph{SQLite}. \\
+\item[View]  \ding{32} \\ \\
+The view is the module that display the data provided by the model in a specific format. \\
+\item[Controller]  \ding{32}  \\ \\
+The controller is responsible to handle the other two models working together. This module receives a request from a client, invokes the \emph{model} to perform the requested operations and send the resulting data to the \emph{view}. The view is in charged to  format the resulting data to be presented to the user. This format is in HTML format.
+\end{description}
+
 \chapter{ Architectural and Component-level Design}
 \section{ System Structure}
 \subsection{ Architecture Diagram}
 \begin{figure}[h!]
   \begin{center}
-   \includegraphics[width=13.5cm]{pics/ar.png}
+   \includegraphics[width=13.7cm]{pics/ar.png}
   \end{center}
 \caption{Block Diagram showing major components.}
 \end{figure}
 
+The figure shows the \emph{Architectural Diagram}. This diagram shows the main components in our application. The main characteristic the application will be divided in different levels of interaction. 
+
+The database will only interact with the \emph{Modules}, that will be responsible for retrieving and storing data from the database.
+
+ The \emph{Application} will be responsible for controlling the interaction between the user and the database. Through the \emph{Web Interface} the user will request information that the application will receive invoking the correct module.
+
+The tools used to develop the System are HTML, CSS, PHP and MySQL.
+
+\newpage
+
 \section{Class Diagram}
+\vskip 2cm
 \begin{figure}[h!]
   \begin{center}
-   \includegraphics[width=18cm, angle=90]{pics/class.png}
+   \includegraphics[width=16.2cm]{pics/class.png}
   \end{center}
 \caption{Class Diagram.}
 \end{figure}
 
-\section{Other Diagrams}
-\subsection{Activity Diagrams}
+\newpage
+
+\section{Sequence Diagrams}
+\vskip 1 cm
+These interaction diagrams show the order of operation of the different processes or objects in our system. The interact with each other by sending messages (represented by the horizontal arrows).
+\vskip 1cm
+\subsection{Take Survey}
+\vskip 1cm
+\begin{figure}[!hp]
+  \begin{center}
+   \includegraphics[width=11.5cm]{pics/take_survey.png}
+  \end{center}
+\caption{Sequence Diagram.}
+\end{figure}
+\newpage
+\subsection{Upload Experiments}
+%\vskip 1cm
+\begin{figure}[!hp]
+  \begin{center}
+   \includegraphics[width=11.5cm]{pics/upload_experiments.png}
+  \end{center}
+\caption{Upload experiment.}
+\end{figure}
+
+
+\subsection{Download Experiments}
+%\vskip 1cm
+\begin{figure}[!hp]
+  \begin{center}
+   \includegraphics[width=11.5cm]{pics/download_experiments.png}
+  \end{center}
+\caption{Download Experiment.}
+\end{figure}
+
+
+\subsection{View Experiments}
+\vskip 1cm
+\begin{figure}[!hp]
+  \begin{center}
+   \includegraphics[width=11.5cm]{pics/view_experiments.png}
+  \end{center}
+\caption{View Experiments.}
+\end{figure}
+
+%\vskip 1.5cm
+% The diagram shows the interation between the \emph{participant} with the \emph{system}, in order to take a \emph{survey}.
+
+\newpage
+
+\section{Activity Diagrams}
+\subsection {Survey creation}
 \begin{figure}[h!]
   \begin{center}
    \includegraphics[width=13.5cm]{pics/Activity.png}
   \end{center}
 \caption{Activity Diagram for survey creation.}
 \end{figure}
-
+This is a graphical representation of workflows of the activity of survey creation. It shows the steps needed to be followed in order to upload a new survey (or as we call it \emph{experiment}). The administrator selects a file to upload. They system will check the validity of the file format, if correct the user can either make final changes or create it. If the format is incorrect, the system will show the error and request a new file.
+\newpage
+\subsection{Survey Management}
 \begin{figure}[!hp]
   \begin{center}
-   \includegraphics[width=13.8cm]{pics/Activity2.png}
+   \includegraphics[width=13.76cm]{pics/Activity2.png}
   \end{center}
 \caption{Activity Diagram for survey management.}
 \end{figure}
+\vskip 1cm
+This activity diagram represents operational step-by-step workflows of the survey management. The main options that the system will allow the administrator to perform related to experiments is their creation or edition. In order to perform basic operations such as {\it import, export} or {\it delete}, you need to select the survey to which you are going to apply the operations.
 
 \pagebreak
-
-\subsection{Sequence Diagrams}
-
-\begin{figure}[!hp]
-  \begin{center}
-   \includegraphics[width=15cm]{pics/Sequence.png}
-  \end{center}
-\caption{Sequence Diagram.}
-\end{figure}
-
 \pagebreak
-\subsection{Use Case Diagrams}
-
+\section{Use Case Diagrams}
+\vskip 1cm
 \begin{figure}[h!]
   \begin{center}
-   \includegraphics[width=14cm]{pics/usecase.png}
+   \includegraphics[width=12.2cm]{pics/usecase.png}
   \end{center}
 \caption{Main Use Case Diagram.}
 \end{figure}
+\vskip 1cm
+This use case shows the main basic functions of our system. There are to main actors that will interact with the system, the \emph{administrator} and the \emph{paticipant}. Each of them will be able to perform some tasks, as specified by the previous figure.
+
 
 \chapter{ Restrictions, Limitations, and Contraints}
 
@@ -158,8 +236,46 @@ The main features that the software will present are:
 	\item sentences per page
 \end{itemize}
 
-\subsection{ Screen Images}
-\subsection{ Objects And Actions}
+\subsection{ Screen Images }
+\vskip 0.8cm
+\subsubsection{Login Screen}
+\begin{figure}[h!!]
+  \begin{center}
+   \includegraphics[width=10.7cm]{pics/login.png}
+  \end{center}
+\caption{Login Screen.}
+\end{figure}
+\vskip  1.4cm
+This is the first page that appears to the administrator while the application. It will request an user name and the password. If the input is correct (matches with the records in the database), the main administration panel will show up.
+
+\newpage
+\subsubsection{Admin Screen}
+\begin{figure}[hp!!]
+  \begin{center}
+   \includegraphics[width=14cm]{pics/adminPage.png}
+  \end{center}
+\caption{Adminisrator Screen.}
+\end{figure}
+Main page where the administrator can perform the main operations of survey management.
+\subsubsection{List of Experiments Screen}
+\begin{figure}[hp!!]
+  \begin{center}
+   \includegraphics[width=14cm]{pics/experiments.png}
+  \end{center}
+\caption{Screen showing list of experiments.}
+\end{figure}
+
+\newpage
+\subsubsection{Survey Screen}
+\begin{figure}[h!!]
+  \begin{center}
+   \includegraphics[width=14cm]{pics/survey.png}
+  \end{center}
+\caption{Survey Screen.}
+
+\end{figure}
+\vskip 1cm
+Sample screen of how a survey might look like. The red high-lighted text shows when the user sent the survey but he did not fill all fields correctly.
 
 
 
