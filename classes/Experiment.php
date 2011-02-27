@@ -4,6 +4,7 @@ include '../includes/PHPExcel/IOFactory.php';
 class ExperimentReader {
 	
 	public $experimentProperties = array();
+	public $experimentProperties = array();
 	public $experimentItemCodes = array();
 	public $experimentItems = array();
 	public $experimentResponseTypes = array();
