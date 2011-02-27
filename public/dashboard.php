@@ -69,7 +69,7 @@ include 'auth.inc.php';
 					<div class="box">
 						<h2>Experiments</h2>
 						<div class="utils">
-							<a href="experiments.php">View More</a>
+							<a href="experimentsView.php">View More</a>
 						</div>
 						<?php require_once '../classes/surveyDB.php';
 							$survey = new surveyDB();

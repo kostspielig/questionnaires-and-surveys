@@ -13,15 +13,15 @@ include 'auth.inc.php';
 		<link rel="stylesheet" href="css/colour.css" type="text/css" media="screen" charset="utf-8" />
 	</head>
 	<body>
-		<form method="post" action="">
 		<h1 id="head">COGNITI<FONT COLOR="#FFFAA4">VE</FONT><font style="font-size:120%"> S</font>UR<FONT COLOR="#FFFAA4">VEYS</FONT></h1>
 		
 		<?php include '../includes/navigationBar.php' ?>
 		
+		<form method="post" action="getfile.php" enctype="multipart/form-data">
 			<div id="content" class="container_16 clearfix">
 				<div class="grid_4">
 					<p>
-						<label>Experiment name<small></small></label>
+						<label for="file">Filename<small></small></label>
 						<input type="text" />
 					</p>
 				</div>
@@ -34,7 +34,8 @@ include 'auth.inc.php';
 				<div class="grid_5">
 					<p>
 						<label>&nbsp;</label>
-						<input type="file" value="Upload" />
+						
+						<input type="file" name="file" id="file"/>
 						<!--<label>Department</label>
 						<select>
 							<option>Development</option>
@@ -47,7 +48,7 @@ include 'auth.inc.php';
 				<div class="grid_2">
 					<p>
 						<label>&nbsp;</label>
-						<input type="submit" value="Upload" />
+						<input type="submit" name="submit" value="Submit" />
 					</p>
 				</div>
 				<div class="grid_16">
