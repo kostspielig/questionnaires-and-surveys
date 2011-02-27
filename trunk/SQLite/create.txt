@@ -1,0 +1,111 @@
+DROP TABLE answer;
+DROP TABLE user_questions;
+DROP TABLE participant;
+DROP TABLE question;
+DROP TABLE survey;
+DROP TABLE experiment;
+DROP TABLE administrator;
+
+CREATE TABLE administrator (
+	admin_id TEXT UNIQUE PRIMARY KEY, 
+	password TEXT
+);
+
+CREATE TABLE experiment (
+	exp_id INTEGER PRIMARY KEY, 
+	name TEXT,
+	admin_id TEXT NOT NULL,
+	FOREIGN KEY (admin_id) REFERENCES administrator(admin_id)
+		ON DELETE CASCADE
+);
+
+CREATE TABLE survey (
+	sur_id INTEGER PRIMARY KEY, 
+	exp_id INTEGER NOT NULL,
+	name TEXT, 
+	pseudo_random_width NUMERIC,
+	-- Filename Options
+	output_filename TEXT,
+	css_filename TEXT,
+	thank_you_page TEXT,
+	-- Table properties
+	questions_per_page NUMERIC, 
+	table_width NUMERIC,
+	table_alignment TEXT,
+	table_border_thickness NUMERIC, 
+	table_cell_padding NUMERIC, 
+	table_cell_spacing TEXT, 
+	-- Header Properties
+	custom_header TEXT,
+	header_left_title TEXT,
+	header_right_title TEXT,
+	header_alignment TEXT,
+	header_border_thickness NUMERIC,
+	header_padding NUMERIC,
+	header_spacing NUMERIC,
+	-- Survey Left Column Properties
+	left_column_width NUMERIC,
+	left_column_alignment TEXT,
+	left_column_border_thickness NUMERIC,
+	left_column_padding NUMERIC,
+	left_column_spacing NUMERIC,
+	-- Survey Right Column Properties
+	right_column_width NUMERIC,
+	right_column_alignment TEXT,
+	right_column_border_thickness NUMERIC,
+	right_column_padding NUMERIC,
+	right_column_spacing NUMERIC,
+	-- Pagination Text properties
+	pagination_text_view TEXT,
+	pagination_text_Alignment TEXT,
+	pagination_text_position TEXT,
+	-- Pagination Buttons Table
+	pagination_buttons_width NUMERIC,
+	pagination_buttons_alignment TEXT,
+	pagination_buttons_border_thickness NUMERIC,
+	pagination_buttons_padding NUMERIC,
+	pagination_buttons_spacing NUMERIC,
+	FOREIGN KEY(exp_id) REFERENCES experiment(exp_id)
+		ON DELETE CASCADE
+);
+
+CREATE TABLE question (
+	que_id INTEGER PRIMARY KEY,
+	sur_id INTEGER NOT NULL,
+	exp_id INTEGER NOT NULL,
+	item_code TEXT,
+	item TEXT,
+	response_type TEXT,
+	FOREIGN KEY (sur_id) REFERENCES survey(sur_id)	
+		ON DELETE CASCADE, 
+	FOREIGN KEY (exp_id) REFERENCES experiment(exp_id)
+		ON DELETE CASCADE
+);
+
+CREATE TABLE participant (
+	part_id INTEGER PRIMARY KEY,
+	sur_id INT NOT NULL,
+	name TEXT,
+	FOREIGN KEY (sur_id) REFERENCES survey(sur_id)
+		ON DELETE CASCADE
+);
+
+CREATE TABLE user_questions (
+	user_question_id INTEGER PRIMARY KEY,
+	part_id INTEGER NOT NULL,
+	question TEXT,
+	answer TEXT,
+	FOREIGN KEY (part_id) REFERENCES participant(part_id)
+		ON DELETE CASCADE
+);
+
+CREATE TABLE answer (
+	an TEXT PRIMARY KEY,
+	part_id INTEGER NOT NULL,
+	que_id INTEGER NOT NULL,
+	FOREIGN KEY (part_id) REFERENCES participant(part_id)
+		ON DELETE CASCADE,
+	FOREIGN KEY (que_id) REFERENCES question(que_id)
+		ON DELETE CASCADE
+	
+)
