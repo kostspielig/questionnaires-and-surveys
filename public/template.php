@@ -5,20 +5,15 @@ include 'auth.inc.php';
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-	<head>
-		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-		<title>Cognitive Surveys</title>
-		<link rel="stylesheet" href="css/960.css" type="text/css" media="screen" charset="utf-8" />
-		<link rel="stylesheet" href="css/template.css" type="text/css" media="screen" charset="utf-8" />
-		<link rel="stylesheet" href="css/colour.css" type="text/css" media="screen" charset="utf-8" />
-	</head>
+	<?php include '../includes/head.php' ?>
 	<body>
 		<h1 id="head">COGNITI<FONT COLOR="#FFFAA4">VE</FONT><font style="font-size:120%"> S</font>UR<FONT COLOR="#FFFAA4">VEYS</FONT></h1>
 
 		<ul id="navigation">
 			<li><a href="dashboard.php">Admin</a></li>
+			<li><a href="experimentsView.php">Experiments</a></li>
 			<li><span class="active">About</span></li>
-			<li><a href="#">Other</a></li>
+			<li><a href="survey.php">other</a></li>
 		</ul>
 		
 		<div id="content" class="container_16 clearfix">
