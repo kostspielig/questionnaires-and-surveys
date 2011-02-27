@@ -1,3 +1,13 @@
+<?php
+session_start();
+if(!session_is_registered(user)){
+	header('location:login.php');
+} else  {
+
+}
+?>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -38,7 +48,7 @@
 						<div class="utils">
 							<a href="about.html">View More</a>
 						</div>
-						<p><br/><strong>User : </strong> Professor Jon Sprouse<br/><br/><strong>Date : </strong> <?php echo date("Y.m.d") ?> </b></p><br/>
+						<p><br/><strong>User : </strong> Professor Jon Sprouse<br/><br/><strong>Date : </strong> <?php echo date("Y.m.d") ?> </b><br/><strong>Logout  </strong> </b></p><br/>
 					</div>
 					<div class="box">
 						<h2>Upload Experiment</h2>
