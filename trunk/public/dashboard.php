@@ -1,10 +1,5 @@
 <?php
-session_start();
-if(!session_is_registered(user)){
-	header('location:login.php');
-} else  {
-
-}
+include 'auth.inc.php';
 ?>
 
 
@@ -48,7 +43,7 @@ if(!session_is_registered(user)){
 						<div class="utils">
 							<a href="about.html">View More</a>
 						</div>
-						<p><br/><strong>User : </strong> Professor Jon Sprouse<br/><br/><strong>Date : </strong> <?php echo date("Y.m.d") ?> </b><br/><strong>Logout  </strong> </b></p><br/>
+						<p><br/><strong>User : </strong> Professor Jon Sprouse<br/><br/><strong>Date : </strong> <?php echo date("Y.m.d") ?> </b><br/><br/><strong><a href="logout.php">Logout </a> </strong> </b></p><br/>
 					</div>
 					<div class="box">
 						<h2>Upload Experiment</h2>
