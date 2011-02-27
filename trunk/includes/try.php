@@ -1,6 +1,6 @@
 <?php
-require_once 'dbController.php';
-require_once 'surveyDB.php';
+require_once '../classes/dbController.php';
+require_once '../classes/surveyDB.php';
 
 //$new_db = new dbController();
 //$new_db->createDB();

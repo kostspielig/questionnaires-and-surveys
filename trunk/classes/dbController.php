@@ -7,8 +7,8 @@ class dbController
     
     // constructor
     public function __construct() {
-        $this->file = 'db/create.txt';
-        $this->name = "db/database.bd";
+        $this->file = '../SQLite/create.txt';
+        $this->name = "../SQLite/database.db";
 		$f = fopen("$this->file", 'r');
 		$this->file = fread($f, filesize($this->file ));
 		fclose($f);
