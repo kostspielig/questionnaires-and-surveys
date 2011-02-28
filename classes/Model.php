@@ -25,7 +25,11 @@ class Model {
 	}
 	
 	public function uploadExperiment(Experiment $exp, $name, $admin) {
+		$this->db->open();
+		// Insert experiment
 		$id = $db->insertExperiment($name,"NULL, '".$name."', '".$admin."'");
+		// Insert survey
+		$this->db->close();
 	}
 }
 ?>

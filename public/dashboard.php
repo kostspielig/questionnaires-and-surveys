@@ -36,8 +36,8 @@ include 'auth.inc.php';
 		<h1 id="head">COGNITI<FONT COLOR="#FFFAA4">VE</FONT><font style="font-size:120%"> S</font>UR<FONT COLOR="#FFFAA4">VEYS</FONT></h1>
 		
 		<ul id="navigation">
-			<li><span class="active">Admin</a></li>
-			<li><a href="experimentsView.php">Experiments</span></li>
+			<li><span class="active">Admin</span></li>
+			<li><a href="experimentsView.php">Experiments</a></li>
 			<li><a href="template.php">About</a></li>
 			<li><a href="survey.php">other</a></li>
 		</ul>

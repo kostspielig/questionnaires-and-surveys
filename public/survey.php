@@ -12,9 +12,9 @@ include 'auth.inc.php';
 
 		<ul id="navigation">
 			<li><a href="dashboard.php">Admin</a></li>
-			<li><a href="experimentsView.php">Experiments</span></li>
+			<li><a href="experimentsView.php">Experiments</a></li>
 			<li><a href="template.php">About</a></li>
-			<li><span class="active">other</a></li>
+			<li><span class="active">other</span></li>
 		</ul>
 			<div id="content" class="container_16 clearfix">
 				<div class="grid_16">
