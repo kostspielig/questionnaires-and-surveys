@@ -1,6 +1,7 @@
 <?php
 
 include_once 'surveyDB.php';
+include_once 'Experiment.php';
 
 class Model {
     public $db;   
@@ -21,6 +22,10 @@ class Model {
 		$res = $this->db->getUser ($name, $pass);
 		$this->db->close();
 		return $res;
+	}
+	
+	public function uploadExperiment(Experiment $exp, $name, $admin) {
+		$id = $db->insertExperiment($name,"NULL, '".$name."', '".$admin."'");
 	}
 }
 ?>

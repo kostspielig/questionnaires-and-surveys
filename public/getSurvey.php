@@ -14,10 +14,12 @@ if ($_FILES["file"]["type"] == "application/vnd.openxmlformats-officedocument.sp
 			$error= $_FILES["file"]["name"] . " already exists. ";
 		}
 		else {
-		move_uploaded_file($_FILES["file"]["tmp_name"],
-		"../experiments/" . $_FILES["file"]["name"]);
-		//echo "Stored in: " . "upload/" . $_FILES["file"]["name"];
-		$success = 'File '.$_FILES["file"]["name"].' uploaded correctly';
+			move_uploaded_file($_FILES["file"]["tmp_name"],
+			"../experiments/" . $_FILES["file"]["name"]);
+		
+			$success = 'File '.$_FILES["file"]["name"].' uploaded correctly';
+			//TODO: import Experiment to the database!
+			
 		}
     }
 } 
