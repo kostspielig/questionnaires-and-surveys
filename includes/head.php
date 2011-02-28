@@ -5,4 +5,5 @@
 	<!--<link rel="stylesheet" href="css/fluid.css" type="text/css" media="screen" charset="utf-8" />-->
 	<link rel="stylesheet" href="css/template.css" type="text/css" media="screen" charset="utf-8" />
 	<link rel="stylesheet" href="css/colour.css" type="text/css" media="screen" charset="utf-8" />
+	<link rel="shortcut icon" href="../public/images/fav.ico">
 </head>

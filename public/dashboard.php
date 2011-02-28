@@ -16,6 +16,7 @@ include 'auth.inc.php';
 		<script src="js/glow/1.7.0/core/core.js" type="text/javascript"></script>
 		<script src="js/glow/1.7.0/widgets/widgets.js" type="text/javascript"></script>
 		<link href="js/glow/1.7.0/widgets/widgets.css" type="text/css" rel="stylesheet" />
+		<link rel="shortcut icon" href="images/fav.ico">
 		<script type="text/javascript">
 			glow.ready(function(){
 				new glow.widgets.Sortable(
