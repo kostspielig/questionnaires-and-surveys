@@ -81,10 +81,18 @@ include 'auth.inc.php';
 						</tfoot>
 						<tbody>
 						<?php require_once '../classes/surveyDB.php';
-							$survey = new surveyDB();
-							$survey->open(); 
-							$survey->printExperiments(1);
-							$survey->close();?>
+							$m = new surveyDB();
+							$m->open();
+							$result = $m->getExperiments();
+							//print_r( $result);
+							while($user = sqlite_fetch_object($result)) {
+								echo ( ($user->exp_id % 2) ? '<tr>' : '<tr class="alt">' ).'<td>'.$user->exp_id.
+									'</td><td>'.$user->name.'</td><td>'.$user->admin_id.'</td>';	
+								echo  '<td><a href="#" class="edit">Edit</a></td>  <td><a href="#" class="delete">Delete</a></td></tr>';
+								
+							}
+							$m->close();
+						?>
 						</tbody>
 					</table>
 				</div>

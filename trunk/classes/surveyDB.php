@@ -13,15 +13,12 @@ class surveyDB
     	$this->dbhandle = sqlite_open("$this->name", 0666, $error);
 		if (!$this->dbhandle) die ($error);
     }
+    
     public function close () {
 		sqlite_close($this->dbhandle);
     }
-    public function insertExperiment($name,$values) {
-    	insert("experiments", $values);
-    	//sqlite_query($this->dbhandle,"SELECT exp_id FROM experiment WHERE");
-    	return sqlite3_last_insert_rowid($dbhandle);
-    }
     
+
     // Using rowid it will autoincrement the ID :)
     public function insert ($table, $values) {
 		$stm = "INSERT INTO ". $table." VALUES( ".$values." )";
@@ -31,6 +28,17 @@ class surveyDB
  
 		echo "Data successfully inserted.";
     }
+    
+    public function insertExperiment($name,$values) {
+    	$this->insert("experiment", $values);
+    	//sqlite_query($this->dbhandle,"SELECT exp_id FROM experiment WHERE");
+    	return sqlite_last_insert_rowid($this->dbhandle);
+    }
+    
+    public function insertSurvet($exp_id, $values) {
+    	$this->insert("survey", $values);
+    }
+    
     //$_REQUEST['nameofinput']
     public function printExperiments($type){
     	// execute a query    
@@ -48,6 +56,11 @@ class surveyDB
 		$result = sqlite_query($this->dbhandle,"SELECT * FROM experiment");
 		if (!$result) die("Cannot execute query.");
 		return $result;
+	}
+	
+	public function deleteExperiment($exp_id) {
+		$result = sqlite_query($this->dbhandle,"DELETE FROM experiment WHERE exp_id = ".$exp_id);
+		if (!$result) die("Cannot execute delete query.");
 	}
 	
 	public function printUser(){
