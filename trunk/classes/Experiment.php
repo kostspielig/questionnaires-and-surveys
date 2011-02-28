@@ -1,6 +1,6 @@
 <?php
-include '../includes/PHPExcel/IOFactory.php';
-include '../classes/Survey.php';
+include_once '../includes/PHPExcel/IOFactory.php';
+include_once '../classes/Survey.php';
 
 class Experiment {
 	
@@ -22,8 +22,8 @@ class Experiment {
 			$count++;
 		}
 		
-		//var_dump(get_defined_vars());
-		
+		//var_dump(get_defined_vars());	
 	}
-	
 } 
+
+?>

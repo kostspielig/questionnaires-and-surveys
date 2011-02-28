@@ -16,6 +16,11 @@ class surveyDB
     public function close () {
 		sqlite_close($this->dbhandle);
     }
+    public function insertExperiment($name,$values) {
+    	insert("experiments", $values);
+    	//sqlite_query($this->dbhandle,"SELECT exp_id FROM experiment WHERE");
+    	return sqlite3_last_insert_rowid($dbhandle);
+    }
     
     // Using rowid it will autoincrement the ID :)
     public function insert ($table, $values) {
@@ -44,12 +49,14 @@ class surveyDB
 		if (!$result) die("Cannot execute query.");
 		return $result;
 	}
+	
 	public function printUser(){
 		$result = sqlite_query($this->dbhandle, "SELECT * FROM administrator");
 		if (!$result) die ("Cannot execute query.");
 		$user = sqlite_fetch_object($result);
 		echo 'hey user: '.$user->admin_id.' pass: '.$user->password;
 	}
+	
 	//1 TRUE 0 FALSE
 	public function getUser ($name, $password) {
 		$result = sqlite_query($this->dbhandle, "SELECT * FROM administrator WHERE admin_id='$name' AND password='$password'");
