@@ -29,14 +29,29 @@ class surveyDB
 		echo "Data successfully inserted.";
     }
     
-    public function insertExperiment($name,$values) {
+    public function insertExperiment($values) {
     	$this->insert("experiment", $values);
     	//sqlite_query($this->dbhandle,"SELECT exp_id FROM experiment WHERE");
     	return sqlite_last_insert_rowid($this->dbhandle);
     }
     
-    public function insertSurvet($exp_id, $values) {
+    public function insertSurvey($values) {
     	$this->insert("survey", $values);
+    	return sqlite_last_insert_rowid($this->dbhandle);
+    }
+    
+    public function insertQuestion($values) {
+    	$this->insert("question", $values);
+    	return sqlite_last_insert_rowid($this->dbhandle);
+    }
+    
+    public function insertParticipant($values) {
+    	$this->insert("participant", $values);
+    }
+    
+    public function createUserQuestion($values) {
+    	$this->insert("user_questions", $values);
+    	return sqlite_last_insert_rowid($this->dbhandle); //Do we need a return here? -> No?
     }
     
     //$_REQUEST['nameofinput']

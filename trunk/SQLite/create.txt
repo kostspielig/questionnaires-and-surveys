@@ -1,4 +1,5 @@
 DROP TABLE answer;
+DROP TABLE user_answer;
 DROP TABLE user_questions;
 DROP TABLE participant;
 DROP TABLE question;
@@ -72,19 +73,16 @@ CREATE TABLE survey (
 CREATE TABLE question (
 	que_id INTEGER PRIMARY KEY,
 	sur_id INTEGER NOT NULL,
-	exp_id INTEGER NOT NULL,
 	item_code TEXT,
 	item TEXT,
 	response_type TEXT,
 	FOREIGN KEY (sur_id) REFERENCES survey(sur_id)	
-		ON DELETE CASCADE, 
-	FOREIGN KEY (exp_id) REFERENCES experiment(exp_id)
 		ON DELETE CASCADE
 );
 
 CREATE TABLE participant (
 	part_id INTEGER PRIMARY KEY,
-	sur_id INT NOT NULL,
+	sur_id INTEGER NOT NULL,
 	name TEXT,
 	FOREIGN KEY (sur_id) REFERENCES survey(sur_id)
 		ON DELETE CASCADE
@@ -92,17 +90,28 @@ CREATE TABLE participant (
 
 CREATE TABLE user_questions (
 	user_question_id INTEGER PRIMARY KEY,
-	part_id INTEGER NOT NULL,
+	sur_id INTEGER NOT NULL,
 	question TEXT,
+	FOREIGN KEY (sur_id) REFERENCES survey(sur_id)
+		ON DELETE CASCADE
+);
+CREATE TABLE user_answer (
+	ans_id INTEGER PRIMARY KEY,
+	part_id INTEGER NOT NULL,
+	user_question_id INTEGER NOT NULL,
 	answer TEXT,
 	FOREIGN KEY (part_id) REFERENCES participant(part_id)
+		ON DELETE CASCADE,
+	FOREIGN KEY (user_question_id) REFERENCES user_questions(user_question_id)
 		ON DELETE CASCADE
+	
 );
 
 CREATE TABLE answer (
-	an TEXT PRIMARY KEY,
+	an_id INTEGER PRIMARY KEY,
 	part_id INTEGER NOT NULL,
 	que_id INTEGER NOT NULL,
+	answer TEXT,
 	FOREIGN KEY (part_id) REFERENCES participant(part_id)
 		ON DELETE CASCADE,
 	FOREIGN KEY (que_id) REFERENCES question(que_id)

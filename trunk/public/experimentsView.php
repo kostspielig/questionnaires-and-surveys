@@ -17,7 +17,7 @@ include 'auth.inc.php';
 		</ul>
 		<!--<?php include '../includes/navigationBar.php' ?>-->
 		
-		<form method="post" action="getfile.php" enctype="multipart/form-data">
+		<form method="post" action="getSurvey.php" enctype="multipart/form-data">
 			<div id="content" class="container_16 clearfix">
 					<div class="grid_16">
 					<h2>List of Experiments </h2>
