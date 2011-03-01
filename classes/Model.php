@@ -27,8 +27,27 @@ class Model {
 	public function uploadExperiment(Experiment $exp, $name, $admin) {
 		$this->db->open();
 		// Insert experiment
-		$id = $db->insertExperiment($name,"NULL, '".$name."', '".$admin."'");
+		$exp_id = $this->db->insertExperiment("NULL, '".$name."', '".$admin."'");
 		// Insert survey
+		foreach ($exp->$surveys as $sur) {
+			$sur_id = $this->db->insertSurvey("NULL,'".$exp_id."', '".$sur->surveyProperties['name']."'");
+			/*WE NEED MANY MORE FIELDS! */
+			
+			// Insert User Info Questions
+			$i = 0;
+			while ($i < count($sur->surveyUserInfo)) {
+				$this->db->createUserQuestion("NULL, '".$sur_id."','".$sur->surveyUserInfo[$i]."'");
+			}
+			
+			$i = 0;
+			// Insert Questions in Survey
+			while ($i < count($sur->surveyItems)) {
+				$this->db->insertQuestion ("NULL, '".$sur_id."',
+					".$sur->surveyItemCodes[$i]."', ".$sur->surveyItems[$i]."', 
+					".$sur->surveyResponseTypes[$i]."'");
+			}
+		}
+		
 		$this->db->close();
 	}
 }
