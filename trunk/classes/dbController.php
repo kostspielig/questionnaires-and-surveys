@@ -24,6 +24,18 @@ class dbController
 		sqlite_close($dbhandle);
     }
     
+    //Create a new database using SQLite3 format instead of SQLite2
+    public function createDB3() {
+    	$this->name = "../SQLite/database.db3";
+    	try {
+    		$db = new PDO('sqlite:'.$this->name);
+    		$db->exec($this->file);
+    		$db = NULL;
+    	} catch(PDOException $e) {
+    		print 'Exception: '.$e->getMessage();
+    	}
+    }
+    
     // Lets check the retrieved file!
     public function displayFile() {
         echo $this->file;
