@@ -2,6 +2,8 @@
 include_once '../includes/PHPExcel/IOFactory.php';
 include_once '../classes/Survey.php';
 
+//TODO: check format, question spacing
+
 class Experiment {
 	
 	public $surveys = array();
