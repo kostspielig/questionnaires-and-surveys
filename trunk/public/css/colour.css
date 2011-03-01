@@ -41,6 +41,9 @@ a.edit {
 a.delete {
 	background-image:url(trash.png)
 }
+a.url {
+	background-image:url(url.png)
+}
 
 #head {
 	background:#313230

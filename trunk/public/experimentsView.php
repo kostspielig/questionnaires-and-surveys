@@ -69,7 +69,7 @@ include 'auth.inc.php';
 								<th>ID</th>
 								<th>Name</th>
 								<th>Owner</th>
-								<th colspan="2" width="10%">Actions</th>
+								<th colspan="3" width="10%">Actions</th>
 							</tr>
 						</thead>
 						<tfoot>
@@ -88,7 +88,7 @@ include 'auth.inc.php';
 							while($user = sqlite_fetch_object($result)) {
 								echo ( ($user->exp_id % 2) ? '<tr>' : '<tr class="alt">' ).'<td>'.$user->exp_id.
 									'</td><td>'.$user->name.'</td><td>'.$user->admin_id.'</td>';	
-								echo  '<td><a href="#" class="edit">Edit</a></td>  <td><a href="#" class="delete">Delete</a></td></tr>';
+								echo  '<td><a href="#" class="url">URL</a></td> <td><a href="#" class="edit">Edit</a></td>  <td><a href="#" class="delete">Delete</a></td></tr>';
 								
 							}
 							$m->close();
