@@ -91,7 +91,7 @@ The tools used to develop the System are HTML, CSS, PHP and MySQL.
 \vskip 2cm
 \begin{figure}[h!]
   \begin{center}
-   \includegraphics[width=16.2cm]{pics/class.png}
+   \includegraphics[width=15.5cm]{pics/class.png}
   \end{center}
 \caption{Class Diagram.}
 \end{figure}
@@ -163,7 +163,7 @@ This is a graphical representation of workflows of the activity of survey creati
 \caption{Activity Diagram for survey management.}
 \end{figure}
 \vskip 1cm
-This activity diagram represents operational step-by-step workflows of the survey management. The main options that the system will allow the administrator to perform related to experiments is their creation or edition. In order to perform basic operations such as {\it import, export} or {\it delete}, you need to select the survey to which you are going to apply the operations.
+This activity diagram represents operational step-by-step work-flows of the survey management. The main options that the system will allow the administrator to perform related to experiments is their creation or edition. In order to perform basic operations such as {\it import, export} or {\it delete}, you need to select the survey to which you are going to apply the operations.
 
 \pagebreak
 \pagebreak
@@ -178,15 +178,26 @@ This activity diagram represents operational step-by-step workflows of the surve
 \vskip 1cm
 This use case shows the main basic functions of our system. There are to main actors that will interact with the system, the \emph{administrator} and the \emph{paticipant}. Each of them will be able to perform some tasks, as specified by the previous figure.
 
+\newpage
+\vskip 1cm
+\begin{figure}[h!]
+  \begin{center}
+   \includegraphics[width=15cm]{pics/manageSurveys.png}
+  \end{center}
+\caption{Survey Management.}
+\end{figure}
+\vskip 1cm
+This use case represents the basic interaction of the administrator with the Surveys. The surveys is the main focus of our application, that is why the Administrator has capabilities for total interaction with them.
+
 
 \chapter{ Restrictions, Limitations, and Contraints}
 
 \section{ Description For Experiment Component}
 An experiment will consist in a set of surveys. Each survey should be able to contain three types of inputs:
 \begin{description}
-\item [text box] It will consists of 0 or more integers.
-\item [radio box] Containing one number. It is inclusive.
-\item  [yes/no radio box] Allowing a two choice answer.
+\item [Text box.] It will consists of 0 or more integers.
+\item [Radio box.] Containing one number. It is inclusive.
+\item  [Yes/No radio box.] Allowing a two choice answer.
 \end{description}
 The system will support infinite surveys and experiments.
 

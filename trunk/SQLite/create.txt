@@ -14,8 +14,9 @@ CREATE TABLE administrator (
 
 CREATE TABLE experiment (
 	exp_id INTEGER PRIMARY KEY, 
-	name TEXT,
 	admin_id TEXT NOT NULL,
+	name TEXT,
+	filename TEXT,
 	FOREIGN KEY (admin_id) REFERENCES administrator(admin_id)
 		ON DELETE CASCADE
 );
