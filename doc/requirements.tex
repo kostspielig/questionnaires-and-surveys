@@ -35,7 +35,7 @@ This document is the software requirements specification for an open source web 
 \section{Purpose}
 This document outlines the online survey system describing its system requirements for the production of  a functional system, as well as user requirements in order to produce software compliant with the user's needs. We define the assumptions used to create the system, and provide use-case diagrams representing the system functionality and relationships.
 
-The following  document is intended to be a first version of the requirements that must be formalized later. 
+The following  document is intended to be a third version of the requirements that must be formalized later. 
 
 \subsection{Intended Audience and Reading Suggestions}
 This document is intended for developers, project managers, users, testers and documentation writers. The main sections contained are an {\it Introduction} that contains information and instructions about the document. An {\it Overall Description} that gives a general idea of the product being specified in this SRS. The {\it Requirements}, describing the characteristics of the software. And the {\it Use Case Diagram}, to pressent a graphical overview of the functionality provided by the system.
@@ -49,14 +49,15 @@ This document is intended for developers, project managers, users, testers and d
 \item[PHP] \emph{Hypertext Preprocessor}. Scripting language.
 \item[DSL] \emph{Digital Subscriber Line}. Technology that provides digital data transmission over the wires of a local telephone network.
 \item[FTP] \emph{File Transfer Protocol}. Standard network protocol used to copy a file from one host to another over a network.
-\item[XLSX] \emph{File extension}. Excel Microsoft Office Open XML Format Spreadsheet.
+\item[XLSX] \emph{File extension}. Excel Microsoft Office XML Format Spreadsheet.
 \item[URL] \emph{Uniform Resource Locator} Specifies where an identified resource is available.
 \end{description}
 
 \section{References}
 \begin{description}
 \item [Project Webpage] {\it \url{  sites.google.com/site/inf117sprouse/home/}}
-\item [IEEE Std 830-1998] {\it \url{ standards.ieee.org/findstds/standard/830-1998.html}}
+\item [IEEE Std 830-1998] {\it \url{ standards.ieee.org/findstds/standard/830-1998}}
+\item [Repository] {\it \url{http://code.google.com/p/questionnaires-and-surveys/}}
 \end{description}
 
 \section{Overview}
@@ -100,7 +101,7 @@ The main features that the software will present are:
 The software should run on a wide range of hardware. Please note that much of the computer equipment might have heterogeneous and unpredictable characteristics. Should the software run on a wide range of hardware. The web characteristics such as AJAX should not be abused because they do not work in older browsers and require more resources on the client side.
 
 \subsection{Software interfaces}
-The software should run on Windows. The software must be compatible with MS Excel and Mozilla Firefox.
+The software should run on Windows. The software must be compatible with MS Excel and the main Internet web browsers such as Mozilla Firefox, Google Chrome and Internet Explorer.
 
 \subsection{Communications interfaces}
 The software must communicate with the clients' browsers via HTTP over TCP / IP.
@@ -120,18 +121,25 @@ There are no site adaptation requirements, besides those already discussed above
 \section{Product functions}
 Broadly, the main functions of the software will be:
 \begin{itemize}
-\item
-\item
+\item Surveys management by the administrator.
+\item Ability to answer the survey by the participants.
 \end{itemize}
 \section{User characteristics}
 There are two different user types:
 \begin{itemize}
-	\item {\it Administator}. Middle class people with different computer literacy. They mush have the ability to transfer files over FTP and the ability to edi xlsx files
+	\item {\it Administator}. Middle class people with different computer literacy. Assumptions:
+\begin{itemize}
+	\item Has the ability to transfer files over FTP.
+       	\item Must have an Admin account to login to manage surveys.
+        \item The Administrator should be able to use the Control Panel to DL/UL surveys to/from the server.
+        \item Ability to edit xlsx files and understand how to apply attributes to the survey prior to upload.
+\end{itemize}
 	\item {\it Participant}. Young people who are very familiar with the technologies. They will have to access to the URL for a given experiment.
 \end{itemize}
 
-\section{Constraints}
+%\section{Constraints}
 \section{Assumptions and dependencies}
+
 These requirements have been developed by making some assumptions based on characteristics of users and the general descriptions of equipment on which it will use the software. % These requirements may have additional costs deducted and the customer may consider deleting it finds that there has been an over-specification of the software.
  \chapter {Requirements}
 \section{External interfaces}
@@ -170,11 +178,11 @@ These requirements have been developed by making some assumptions based on chara
 
 \begin{itemize} 
 	\item  the appearance of the sentences on the web form (font, size, color, spacing, location, etc) needs to be customizable through CSS/HTML tags
-	\item the web form needs to accept a couple of different response types (radio buttons, text boxes, etc)
+	\item The web form needs to accept a couple of different response types (radio buttons, text boxes, etc)
 	\item Left/Center/Right justifiable
-	\item autocomplete off
-	\item css template file option
-	\item sentences per page
+	\item Autocomplete off
+	\item \emph{CSS} template file option
+	\item Sentences per page
 \end{itemize}
 \subsubsection{Administrator}
 The administrator shall be able to do the following actions:
@@ -244,7 +252,7 @@ The information stored in the database will be regarding to the experiments and 
 	\item Installation and maintenance for the Administrator must be very easy.
 \end{itemize}
 
-\subsection{Reliability}
+
 \subsection{Availability}
 The software should have no interruptions in service except the following conditions: 
 \begin{itemize}
@@ -253,7 +261,6 @@ The software should have no interruptions in service except the following condit
 	\item Update from older versions of software.
 \end{itemize}
 
-\subsection{Security}
 \subsection{Portability}    
 \begin{itemize}
 	\item The pages generated must be 100$\%$ compatible
