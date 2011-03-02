@@ -41,7 +41,7 @@ This document describes the design layout for the Survey Generator program by Te
 \chapter{ Data Design}
 \section{ Database Description}
 
-        The data will be stored in the form of an embedded SQLite database. (Database scheme outline in progress.)
+        The data will be stored in the form of an embedded SQLite database. (See Page 9 for database schema outline.)
 \section{ Temporary Data Structures}
 
 This will need to import and export XML files in the form XLSX as well as CSV files. These will
@@ -83,7 +83,7 @@ The database will only interact with the \emph{Modules}, that will be responsibl
 
  The \emph{Application} will be responsible for controlling the interaction between the user and the database. Through the \emph{Web Interface} the user will request information that the application will receive invoking the correct module.
 
-The tools used to develop the System are HTML, CSS, PHP and MySQL.
+The tools used to develop the System are HTML, CSS, PHP and SQLite.
 
 \newpage
 
