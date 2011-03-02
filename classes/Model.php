@@ -49,7 +49,6 @@ class Model {
 			'".$sur->surveyProperties['paginationButtonsTableProperties_width']."', '".$sur->surveyProperties['paginationButtonsTableProperties_alignment']."',
 			'".$sur->surveyProperties['paginationButtonsTableProperties_borderThickness']."', '".$sur->surveyProperties['paginationButtonsTableProperties_padding']."',
 			'".$sur->surveyProperties['paginationButtonsTableProperties_spacing']."'");
-			/*WE NEED MANY MORE FIELDS! */
 			
 			// Insert User Info Questions
 			$i = 0;

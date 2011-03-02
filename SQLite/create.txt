@@ -59,7 +59,7 @@ CREATE TABLE survey (
 	right_column_spacing NUMERIC,
 	-- Pagination Text properties
 	pagination_text_view TEXT,
-	pagination_text_Alignment TEXT,
+	pagination_text_alignment TEXT,
 	pagination_text_position TEXT,
 	-- Pagination Buttons Table
 	pagination_buttons_width NUMERIC,
