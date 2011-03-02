@@ -41,7 +41,7 @@ This document describes the design layout for the Survey Generator program by Te
 \chapter{ Data Design}
 \section{ Database Description}
 
-        The data will be stored in the form of an embedded SQLite database. (See Page 9 for database schema outline.)
+        The data will be stored in the form of an embedded SQLite database. (See figure \ref{database})
 \section{ Temporary Data Structures}
 
 This will need to import and export XML files in the form XLSX as well as CSV files. These will
@@ -89,6 +89,7 @@ The tools used to develop the System are HTML, CSS, PHP and SQLite.
 
 \section{Class Diagram}
 \vskip 2cm
+\label{database}
 \begin{figure}[h!]
   \begin{center}
    \includegraphics[width=15.5cm]{pics/class.png}
@@ -101,21 +102,39 @@ The tools used to develop the System are HTML, CSS, PHP and SQLite.
 \section{Sequence Diagrams}
 \vskip 1 cm
 These interaction diagrams show the order of operation of the different processes or objects in our system. The interact with each other by sending messages (represented by the horizontal arrows).
-\vskip 1cm
-\subsection{Take Survey}
-\vskip 1cm
+\vskip 2.5cm
+\subsection{Request Survey}
+\vskip 1.5cm
 \begin{figure}[!hp]
   \begin{center}
-   \includegraphics[width=11.5cm]{pics/take_survey.png}
+   \includegraphics[width=11cm]{pics/request.png}
   \end{center}
-\caption{Sequence Diagram.}
+\caption{Request Suvey Sequence Diagram.}
+\end{figure}
+\newpage
+\subsection{Submit Survey}
+%\vskip 1cm
+\begin{figure}[!hp]
+  \begin{center}
+   \includegraphics[width=10.5cm]{pics/submit.png}
+  \end{center}
+\caption{Submit Survey Sequence Diagram.}
+\end{figure}
+\vskip 2cm
+\subsection{Login}
+%\vskip 1cm
+\begin{figure}[!hp]
+  \begin{center}
+   \includegraphics[width=10.1cm]{pics/loginse.png}
+  \end{center}
+\caption{Administrator's Login.}
 \end{figure}
 \newpage
 \subsection{Upload Experiments}
 %\vskip 1cm
 \begin{figure}[!hp]
   \begin{center}
-   \includegraphics[width=11.5cm]{pics/upload_experiments.png}
+   \includegraphics[width=11.3cm]{pics/upload.png}
   \end{center}
 \caption{Upload experiment.}
 \end{figure}
@@ -125,17 +144,19 @@ These interaction diagrams show the order of operation of the different processe
 %\vskip 1cm
 \begin{figure}[!hp]
   \begin{center}
-   \includegraphics[width=11.5cm]{pics/download_experiments.png}
+   \includegraphics[width=11.6cm]{pics/download_experiments.png}
   \end{center}
 \caption{Download Experiment.}
 \end{figure}
 
+\newpage
 
+\vskip 1cm
 \subsection{View Experiments}
 \vskip 1cm
 \begin{figure}[!hp]
   \begin{center}
-   \includegraphics[width=11.5cm]{pics/view_experiments.png}
+   \includegraphics[width=10.8cm]{pics/view_experiments.png}
   \end{center}
 \caption{View Experiments.}
 \end{figure}
