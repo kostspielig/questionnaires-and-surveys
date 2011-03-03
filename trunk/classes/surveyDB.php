@@ -24,9 +24,12 @@ class surveyDB
 		$stm = "INSERT INTO ". $table." VALUES( ".$values." )";
  
 		$ok = sqlite_exec($this->dbhandle, $stm);
-		if (!$ok) die("Cannot execute query");
+		if (!$ok){
+			throw new Exception("ERROR: Could not insert values into the table ".$table);
+			die("Cannot execute query");
+		}
  
-		echo "Data successfully inserted.";
+		//echo "Data successfully inserted.";
     }
     
     public function insertExperiment($values) {
@@ -74,7 +77,7 @@ class surveyDB
 	}
 	
 	public function deleteExperiment($exp_id) {
-		$result = sqlite_query($this->dbhandle,"DELETE FROM experiment WHERE exp_id = ".$exp_id);
+		$result = sqlite_query($this->dbhandle,"DELETE FROM experiment WHERE exp_id = '$exp_id'");
 		if (!$result) die("Cannot execute delete query.");
 	}
 	
