@@ -32,8 +32,8 @@ include 'auth.inc.php';
 
 				<div class="grid_4">
 					<p>
-						<label for="file">Filename<small></small></label>
-						<input type="text" />
+						<label for="file">Experminent name<small></small></label>
+						<input type="text" name="name" />
 					</p>
 				</div>
 				<div class="grid_5">
@@ -81,13 +81,22 @@ include 'auth.inc.php';
 						</tfoot>
 						<tbody>
 						<?php require_once '../classes/surveyDB.php';
+						
+							function Up($m, $id) {
+								$m->deleteExperiment($id);
+							}
+							
 							$m = new surveyDB();
 							$m->open();
 							$result = $m->getExperiments();
 							//print_r( $result);
+							$i = 0;
 							while($user = sqlite_fetch_object($result)) {
 								echo ( ($user->exp_id % 2) ? '<tr>' : '<tr class="alt">' ).'<td>'.$user->exp_id.
 									'</td><td>'.$user->name.'</td><td>'.$user->admin_id.'</td>';	
+								$ids[$i] = $user->exp_id;
+								$i ++;
+								print_r($ids);
 								echo  '<td><a href="#" class="url">URL</a></td> <td><a href="#" class="edit">Edit</a></td>  <td><a href="#" class="delete">Delete</a></td></tr>';
 								
 							}

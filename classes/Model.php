@@ -24,12 +24,24 @@ class Model {
 		return $res;
 	}
 	
+	public function deleteExperiment ($exp_id) {
+		$this->db->open();
+		$this->db->deleteExperiment($exp_id);
+		$this->db->close();
+	}
+	
 	public function uploadExperiment(Experiment $exp, $name, $filename, $admin) {
 		$this->db->open();
 		// Insert experiment
-		$exp_id = $this->db->insertExperiment("NULL, '".$name."', '".$filename."','".$admin."'");
+		try {
+			$exp_id = $this->db->insertExperiment("NULL, '".$admin."', '".$name."','".$filename."'");
+		} catch (Exception $e) {
+			return 'Error while inserting experiment. '.$e;
+		}
 		// Insert survey
-		foreach ($exp->$surveys as $sur) {
+		try {
+			
+		foreach ($exp->surveys as $sur) {
 			$sur_id = $this->db->insertSurvey("NULL,'".$exp_id."', '".$sur->surveyProperties['name']."', 
 			'".$sur->surveyProperties['surveyTableProperties_pseudoRandomWidth']."', '".$sur->surveyProperties['outputFilename']."', 
 			'".$sur->surveyProperties['cssFilename']."', '".$sur->surveyProperties['thankYouPage']."', 
@@ -49,23 +61,35 @@ class Model {
 			'".$sur->surveyProperties['paginationButtonsTableProperties_width']."', '".$sur->surveyProperties['paginationButtonsTableProperties_alignment']."',
 			'".$sur->surveyProperties['paginationButtonsTableProperties_borderThickness']."', '".$sur->surveyProperties['paginationButtonsTableProperties_padding']."',
 			'".$sur->surveyProperties['paginationButtonsTableProperties_spacing']."'");
-			
+		
 			// Insert User Info Questions
+			$this->db->close();
+			$this->db->open();
+			
 			$i = 0;
 			while ($i < count($sur->surveyUserInfo)) {
-				$this->db->createUserQuestion("NULL, '".$sur_id."','".$sur->surveyUserInfo[$i]."'");
+				$this->db->createUserQuestion('NULL, "'.$sur_id.'","'.$sur->surveyUserInfo[$i].'"');
+				$i++;
 			}
 			
 			$i = 0;
 			// Insert Questions in Survey
 			while ($i < count($sur->surveyItems)) {
-				$this->db->insertQuestion ("NULL, '".$sur_id."',
-					".$sur->surveyItemCodes[$i]."', ".$sur->surveyItems[$i]."', 
-					".$sur->surveyResponseTypes[$i]."'");
+				$this->db->insertQuestion ('NULL, "'.$sur_id.'",
+					"'.$sur->surveyItemCodes[$i].'", "'.$sur->surveyItems[$i].'", 
+					"'.$sur->surveyResponseTypes[$i].'"');
+				$i++;
 			}
+			
+		}
+		
+		} catch (Exception $e) {
+			$this->db->deleteExperiment($exp_id);
+			return  '<p class="error">Error while inserting Survey. </p>'.$e;
 		}
 		
 		$this->db->close();
+		return $exp_id;
 	}
 }
 ?>
