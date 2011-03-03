@@ -79,6 +79,7 @@ class surveyDB
 	public function deleteExperiment($exp_id) {
 		$result = sqlite_query($this->dbhandle,"DELETE FROM experiment WHERE exp_id = '$exp_id'");
 		if (!$result) die("Cannot execute delete query.");
+		return "success";
 	}
 	
 	public function printUser(){
