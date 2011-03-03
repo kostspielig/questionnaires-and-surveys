@@ -26,8 +26,9 @@ class Model {
 	
 	public function deleteExperiment ($exp_id) {
 		$this->db->open();
-		$this->db->deleteExperiment($exp_id);
+		$ret =$this->db->deleteExperiment($exp_id);
 		$this->db->close();
+		return $ret;
 	}
 	
 	public function uploadExperiment(Experiment $exp, $name, $filename, $admin) {
@@ -89,7 +90,6 @@ class Model {
 		}
 		
 		$this->db->close();
-		return $exp_id;
 	}
 }
 ?>

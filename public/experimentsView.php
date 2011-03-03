@@ -1,5 +1,5 @@
 <?php
-include 'auth.inc.php';
+include_once 'auth.inc.php';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -17,7 +17,7 @@ include 'auth.inc.php';
 		</ul>
 		<!--<?php include '../includes/navigationBar.php' ?>-->
 		
-		<form method="post" action="getSurvey.php" enctype="multipart/form-data">
+		<form method="post" action="getExperiment.php" enctype="multipart/form-data">
 			<div id="content" class="container_16 clearfix">
 					<div class="grid_16">
 					<h2>List of Experiments </h2>
@@ -91,13 +91,11 @@ include 'auth.inc.php';
 							$result = $m->getExperiments();
 							//print_r( $result);
 							$i = 0;
-							while($user = sqlite_fetch_object($result)) {
+							while($user = sqlite_fetch_object($result) ) {
 								echo ( ($user->exp_id % 2) ? '<tr>' : '<tr class="alt">' ).'<td>'.$user->exp_id.
 									'</td><td>'.$user->name.'</td><td>'.$user->admin_id.'</td>';	
-								$ids[$i] = $user->exp_id;
-								$i ++;
-								print_r($ids);
-								echo  '<td><a href="#" class="url">URL</a></td> <td><a href="#" class="edit">Edit</a></td>  <td><a href="#" class="delete">Delete</a></td></tr>';
+								
+								echo  '<td><a href="#" class="url">URL</a></td> <td><a href="#" class="edit">Edit</a></td>  <td><a href="deleteExperiment.php?id='.$user->exp_id.'" class="delete">Delete</a></td></tr>';
 								
 							}
 							$m->close();

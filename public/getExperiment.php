@@ -1,4 +1,6 @@
 <?php
+
+include_once 'auth.inc.php';
 require_once '../classes/Experiment.php';
 require_once '../classes/Model.php';
 
@@ -19,14 +21,16 @@ if ($_FILES["file"]["type"] == "application/vnd.openxmlformats-officedocument.sp
 			move_uploaded_file($_FILES["file"]["tmp_name"],
 			"../experiments/" . $_FILES["file"]["name"]);
 		
-			$success = 'File '.$_FILES["file"]["name"].' uploaded correctly';
-			//TODO: import Experiment to the database!
 			$experiment = new Experiment();
-			$experiment->loadExperimentFromExcelFile($_FILES["file"]["name"]);	
+			$experiment->loadExperimentFromExcelFile($_FILES["file"]["name"]);
+			
+			//Import Experiment to the database!	
 			$m = new Model();
 			$e = $m->uploadExperiment($experiment, $_POST['name'], $_FILES["file"]["name"], $_SESSION['login']);
 			if ($e != null)
 				$error = $e;
+			
+			$success = 'File '.$_FILES["file"]["name"].' uploaded correctly';
 		}
     }
 } 
