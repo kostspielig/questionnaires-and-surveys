@@ -20,7 +20,7 @@ class Experiment {
 		foreach ($objPHPExcel->getWorksheetIterator() as $worksheet) {
 			$survey = new Survey();
 			$survey->loadWorksheet($worksheet);
-			$surveys[$count] = $survey;
+			$this->surveys[$count] = $survey;
 			$count++;
 		}
 		
