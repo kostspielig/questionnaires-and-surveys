@@ -4,6 +4,20 @@ include_once 'auth.inc.php';
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".delete-confirm-span").hide();
+	$(".delete-confirm").click(function(){
+		$(".delete-confirm-span").show();
+		$(".delete-confirm").hide();
+	});
+	$(".no-confirm-delete").click(function(){
+		$(".delete-confirm-span").hide();
+		$(".delete-confirm").show();
+	});
+});
+</script>
 	<?php include '../includes/head.php' ?>
 
 	<body>
@@ -96,7 +110,7 @@ include_once 'auth.inc.php';
 								echo ( ($user->exp_id % 2) ? '<tr>' : '<tr class="alt">' ).'<td>'.$user->exp_id.
 									'</td><td>'.$user->name.'</td><td>'.$user->admin_id.'</td>';	
 								
-								echo  '<td><a href="#" class="url">URL</a></td> <td><a href="#" class="edit">Edit</a></td>  <td><a href="deleteExperiment.php?id='.$user->exp_id.'" class="delete">Delete</a></td></tr>';
+								echo  '<td><a href="#" class="url">URL</a></td> <td><a href="editExperiment.php?filename='.$user->filename.'" class="edit">Edit</a></td>  <td><a href="#" class="delete-confirm">Delete</a><span class="delete-confirm-span"><a href="deleteExperiment.php?id='.$user->exp_id.'" class="delete">Yes</a><a href="#" class="no-confirm-delete">No</a></span></td></tr>';
 								
 							}
 							$m->close();
