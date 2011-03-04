@@ -33,7 +33,7 @@ include 'auth.inc.php';
 	</head>
 	<body>
 
-		<h1 id="head">COGNITI<FONT COLOR="#FFFAA4">VE</FONT><font style="font-size:120%"> S</font>UR<FONT COLOR="#FFFAA4">VEYS</FONT></h1>
+		<h1 id="head">COGNITI<FONT COLOR="#FDF3C1">VE</FONT><font style="font-size:120%"> S</font>UR<FONT COLOR="#FDF3C1">VEYS</FONT></h1>
 		
 		<ul id="navigation">
 			<li><span class="active">Admin</span></li>
