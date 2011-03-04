@@ -14,6 +14,7 @@ include_once 'auth.inc.php';
 			<li><span class="active">Experiments</span></li>
 			<li><a href="template.php">About</a></li>
 			<li><a href="survey.php">other</a></li>
+			<li class="prev"><?php echo $_SESSION['login']?> &nbsp|<a href='logout.php'> Sign out</a></li>
 		</ul>
 		<!--<?php include '../includes/navigationBar.php' ?>-->
 		

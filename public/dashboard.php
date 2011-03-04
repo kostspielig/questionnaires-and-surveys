@@ -40,6 +40,7 @@ include 'auth.inc.php';
 			<li><a href="experimentsView.php">Experiments</a></li>
 			<li><a href="template.php">About</a></li>
 			<li><a href="survey.php">other</a></li>
+			<li class="prev"><?php echo $_SESSION['login']?> &nbsp|<a href='logout.php'> Sign out</a></li>
 		</ul>
 		
 			<div id="content" class="container_16 clearfix">
