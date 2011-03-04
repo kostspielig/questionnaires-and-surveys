@@ -142,6 +142,8 @@ th, td {
 	text-decoration:none;
 }
 
+ul li.prev{float:right;}
+
 /* Content */
 
 #content {

@@ -15,6 +15,7 @@ include 'auth.inc.php';
 			<li><a href="experimentsView.php">Experiments</a></li>
 			<li><a href="template.php">About</a></li>
 			<li><span class="active">other</span></li>
+			<li class="prev"><?php echo $_SESSION['login']?> &nbsp|<a href='logout.php'> Sign out</a></li>
 		</ul>
 			<div id="content" class="container_16 clearfix">
 				<div class="grid_16">
