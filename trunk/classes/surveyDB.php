@@ -82,6 +82,13 @@ class surveyDB
 		return "success";
 	}
 	
+	public function getFilename($exp_id) {
+		$result = sqlite_query($this->dbhandle, "SELECT * FROM experiment WHERE exp_id='$exp_id'");
+		if (!$result) die ("Cannot execute query.");
+		$row = sqlite_fetch_object($result);
+		return ($row!=NULL)? $row->filename:'0';
+	}
+	
 	public function printUser(){
 		$result = sqlite_query($this->dbhandle, "SELECT * FROM administrator");
 		if (!$result) die ("Cannot execute query.");

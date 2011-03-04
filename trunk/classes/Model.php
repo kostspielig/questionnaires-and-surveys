@@ -24,6 +24,13 @@ class Model {
 		return $res;
 	}
 	
+	public function getFilename($exp_id) {
+		$this->db->open();
+		$res = $this->db->getFilename($exp_id);
+		$this->db->close();
+		return $res;
+	}
+	
 	public function deleteExperiment ($exp_id) {
 		$this->db->open();
 		$ret =$this->db->deleteExperiment($exp_id);

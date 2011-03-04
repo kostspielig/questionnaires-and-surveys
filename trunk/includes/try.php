@@ -19,7 +19,9 @@ require_once '../classes/Model.php';
 //$e->loadExperimentFromExcelFile("Experiment A.xlsx");
 
 $m = new Model();
-$m->deleteExperiment(4);
+$n = $m->getFilename(11);
+
+echo ($n != '0')? 'yes':'no';
 //echo $m->uploadExperiment($e,"Experimentoooooo A", "Experiment A.xlsx","jon");
 
 //$survey->printUser();

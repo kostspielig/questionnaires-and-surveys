@@ -20,7 +20,8 @@ if (isset($_POST['submit'])){
 			$_SESSION['login'] = '';
 			$_SESSION['logged'] = 0;
 			
-			$error = '<p><strong> You have supplied an invalid username and/or ' . ' password!</strong></p>';	
+			$error = 'You have supplied an invalid username and/or ' . ' password!';
+			$error = '<p class="error">'.$error.'</p>';	
 		}
 	}
 }
@@ -30,7 +31,9 @@ if (isset($_POST['submit'])){
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 	<title>Login</title>
+	<link rel="stylesheet" href="css/template.css" type="text/css" media="screen" charset="utf-8" />
 
+	<link rel="stylesheet" href="css/colour.css" type="text/css" media="screen" charset="utf-8" />
 	<link href="css/login-box.css" rel="stylesheet" type="text/css" />
 </head>
 

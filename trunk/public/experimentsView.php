@@ -8,20 +8,20 @@ include_once 'auth.inc.php';
 <script type="text/javascript">
 $(document).ready(function(){
 	$(".delete-confirm-span").hide();
-	$(".delete-confirm").click(function(){
+	$(".delete").click(function(){
 		$(".delete-confirm-span").show();
-		$(".delete-confirm").hide();
+		$(".delete").hide();
 	});
 	$(".no-confirm-delete").click(function(){
 		$(".delete-confirm-span").hide();
-		$(".delete-confirm").show();
+		$(".delete").show();
 	});
 });
 </script>
 	<?php include '../includes/head.php' ?>
 
 	<body>
-		<h1 id="head">COGNITI<FONT COLOR="#FFFAA4">VE</FONT><font style="font-size:120%"> S</font>UR<FONT COLOR="#FFFAA4">VEYS</FONT></h1>
+		<h1 id="head">COGNITI<FONT COLOR="#FDF3C1">VE</FONT><font style="font-size:120%"> S</font>UR<FONT COLOR="#FDF3C1">VEYS</FONT></h1>
 		
 		<ul id="navigation">
 			<li><a href="dashboard.php">Admin</a></li>
@@ -104,13 +104,11 @@ $(document).ready(function(){
 							$m = new surveyDB();
 							$m->open();
 							$result = $m->getExperiments();
-							//print_r( $result);
-							$i = 0;
 							while($user = sqlite_fetch_object($result) ) {
 								echo ( ($user->exp_id % 2) ? '<tr>' : '<tr class="alt">' ).'<td>'.$user->exp_id.
 									'</td><td>'.$user->name.'</td><td>'.$user->admin_id.'</td>';	
 								
-								echo  '<td><a href="#" class="url">URL</a></td> <td><a href="editExperiment.php?filename='.$user->filename.'" class="edit">Edit</a></td>  <td><a href="#" class="delete-confirm">Delete</a><span class="delete-confirm-span"><a href="deleteExperiment.php?id='.$user->exp_id.'" class="delete">Yes</a><a href="#" class="no-confirm-delete">No</a></span></td></tr>';
+								echo  '<td><a href="#" class="url">URL</a></td> <td><a href="editExperiment.php?filename='.$user->filename.'" class="edit">Edit</a></td>  <td><a href="#" class="delete">Delete</a><span class="delete-confirm-span"><a href="deleteExperiment.php?id='.$user->exp_id.'" class="delete-confirm">Yes</a><a href="#" class="no-confirm-delete">No</a></span></td></tr>';
 								
 							}
 							$m->close();
