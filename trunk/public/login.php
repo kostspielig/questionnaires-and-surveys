@@ -41,6 +41,7 @@ if (isset($_POST['submit'])){
 	<?php
 		if (isset($error)) {
 			echo $error;
+			unset($error);
 		}
 	?>
 	<div style="padding: 100px 0 0 250px;">

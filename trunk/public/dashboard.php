@@ -58,17 +58,22 @@ include 'auth.inc.php';
 							<a href="#">View More</a>
 						</div>
 						<table>
+						<form method="post" action="getExperiment.php" enctype="multipart/form-data">
 							<tbody>
-							<tr> <td>
-							<input type="file" name="upload_file"/> </td></tr>
+							<tr> <td> <p></p>
+							<label for="file">Experminent name<small></small></label>
+							<input type="text" name="name"> </input></p>
+							<input type="file"  name="file" value="file"/> </td></tr>
 							
 							<tr><td><input type="submit" 
-									name="upload_exp" 
-									id="uploadbutton" 
+									name="submit" value="submit" value="Submit" />	</td>	
+									<!-- id="uploadbutton" 
 									value="Upload"
-									onclick="uploadExperiment()" />	</td>									
+									onclick="uploadExperiment()"-->
+																	
 							</tbody> </tr>
 						</table>
+						</form>
 					</div>
 				</div>
 				<div class="grid_10">

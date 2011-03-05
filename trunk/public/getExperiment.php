@@ -35,7 +35,7 @@ if ($_FILES["file"]["type"] == "application/vnd.openxmlformats-officedocument.sp
     }
 } 
 else {
-	$error = "Invalid file. ";
+	$error = "Invalid file. The correct format is .xslx ";
 }
 
 include'experimentsView.php';
