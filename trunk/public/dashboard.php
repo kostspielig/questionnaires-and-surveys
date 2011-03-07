@@ -38,7 +38,8 @@ include 'auth.inc.php';
 		<ul id="navigation">
 			<li><span class="active">Admin</span></li>
 			<li><a href="experimentsView.php">Experiments</a></li>
-			
+			<li><a href="Site Front/main_page.html">Site Front</a></li>
+            
             <!--
             <li><a href="template.php">About</a></li>
 			<li><a href="survey.php">other</a></li>
