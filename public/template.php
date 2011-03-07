@@ -54,7 +54,7 @@ include 'auth.inc.php';
 
 			<div id="foot">
 				<i>University of California Irvine </i><a href="http://www.uci.edu/">UCI</a>
-			</div>
+			</div><a href="Site Front/about_page.html">about_page</a>
 		
 	</body>
 </html>
