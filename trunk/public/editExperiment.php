@@ -116,6 +116,7 @@ $file = "$download_path$filename";
 
 set_time_limit(0);
 output_file($file, $filename, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-
+echo $file;
+unlink($file);
 
 ?>

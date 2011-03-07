@@ -38,6 +38,13 @@ class Model {
 		return $ret;
 	}
 	
+	public function getNumberOfSurveys($exp_id) {
+		$this->db->open();
+		$res =$this->db->getNumberOfSurveys($exp_id);
+		$this->db->close();
+		return $res;
+	}
+	
 	public function uploadExperiment(Experiment $exp, $name, $filename, $admin) {
 		$this->db->open();
 		// Insert experiment
