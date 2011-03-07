@@ -22,6 +22,7 @@ $m = new Model();
 $n = $m->getFilename(11);
 
 echo ($n != '0')? 'yes':'no';
+echo $m->getNumberOfSurveys(11);
 //echo $m->uploadExperiment($e,"Experimentoooooo A", "Experiment A.xlsx","jon");
 
 //$survey->printUser();

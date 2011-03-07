@@ -89,6 +89,14 @@ class surveyDB
 		return ($row!=NULL)? $row->filename:'0';
 	}
 	
+	public function getNumberOfSurveys($exp_id) {
+		
+		$result = sqlite_query($this->dbhandle, "SELECT COUNT(exp_id) FROM survey WHERE exp_id='$exp_id'");
+		if (!$result) die ("Cannot execute query.");
+		$row = sqlite_fetch_array($result);
+		return ($row!=NULL)? $row['COUNT(exp_id)']:'0';
+	}
+	
 	public function printUser(){
 		$result = sqlite_query($this->dbhandle, "SELECT * FROM administrator");
 		if (!$result) die ("Cannot execute query.");
