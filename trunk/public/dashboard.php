@@ -38,9 +38,13 @@ include 'auth.inc.php';
 		<ul id="navigation">
 			<li><span class="active">Admin</span></li>
 			<li><a href="experimentsView.php">Experiments</a></li>
-			<li><a href="template.php">About</a></li>
+			
+            <!--
+            <li><a href="template.php">About</a></li>
 			<li><a href="survey.php">other</a></li>
-			<li class="prev"><?php echo $_SESSION['login']?> &nbsp|<a href='logout.php'> Sign out</a></li>
+			-->
+            
+            <li class="prev"><?php echo $_SESSION['login']?> &nbsp|<a href='logout.php'> Sign out</a></li>
 		</ul>
 		
 			<div id="content" class="container_16 clearfix">
@@ -48,14 +52,14 @@ include 'auth.inc.php';
 					<div class="box">
 						<h2>Info</h2>
 						<div class="utils">
-							<a href="about.html">View More</a>
+							<a href="template.php">View More</a>
 						</div>
 						<p><br/><strong>User : </strong> Professor Jon Sprouse<br/><br/><strong>Date : </strong> <?php echo date("Y.m.d") ?> </b><br/><br/><strong><a href="logout.php">Logout </a> </strong> </b></p><br/>
 					</div>
 					<div class="box">
 						<h2>Upload Experiment</h2>
 						<div class="utils">
-							<a href="#">View More</a>
+							<a href="experimentsView.php">View More</a>
 						</div>
 						<table>
 						<form method="post" action="getExperiment.php" enctype="multipart/form-data">
@@ -96,7 +100,12 @@ include 'auth.inc.php';
 		<div id="foot">
 			<div class="container_16 clearfix">
 				<div class="grid_16">
+                
+                	<!--
 					<a href="#">Contact Me</a>
+                    -->
+                    (c) Copyright 2011. Jon Sprouse. All rights reserved.
+                    
 				</div>
 			</div>
 		</div>
