@@ -31,28 +31,33 @@ $(document).ready(function(){
 		<ul id="navigation">
 			<li><a href="dashboard.php">Admin</a></li>
 			<li><span class="active">Experiments</span></li>
+            
+            <!--
 			<li><a href="template.php">About</a></li>
 			<li><a href="survey.php">other</a></li>
-			<li class="prev"><?php echo $_SESSION['login']?> &nbsp|<a href='logout.php'> Sign out</a></li>
+            -->
+            
+		  <li class="prev"><?php echo $_SESSION['login']?> &nbsp|<a href='logout.php'> Sign out</a></li>
 		</ul>
 		<!--<?php include '../includes/navigationBar.php' ?>-->
 		
 		<form method="post" action="getExperiment.php" enctype="multipart/form-data">
 			<div id="content" class="container_16 clearfix">
 					<div class="grid_16">
-					<h2>List of Experiments </h2>
+					
 					<?php
 						if (isset($error))
 							echo '<p class="error">'.$error.'</p>';
 						else if (isset($success))
 							echo '<p class="success">'.$success.'</p>';
 						unset($error, $success);
-					?>
-				</div>
+					?></div>
 
+
+                <p><h2>Upload Experiment</h2></p>
 				<div class="grid_4">
 					<p>
-						<label for="file">Experminent name<small></small></label>
+						<label for="file">Experiment name<small></small></label>
 						<input type="text" name="name" />
 					</p>
 				</div>
@@ -76,13 +81,18 @@ $(document).ready(function(){
 						</select> -->
 					</p>
 				</div>
-				<div class="grid_2">
+			  <div class="grid_2">
 					<p>
 						<label>&nbsp;</label>
 						<input type="submit" name="submit" value="Submit" />
 					</p>
 				</div>
-				<div class="grid_16">
+
+
+                <p>&nbsp;</p>
+                <p><h2>List of Experiments</h2></p>
+                <div class="grid_16">
+
 					<table>
 						<thead>
 							<tr>
@@ -133,12 +143,12 @@ $(document).ready(function(){
 							$m->close();
 						?>
 						</tbody>
-					</table>
-				</div>
+				  </table>
+			  </div>
 			</div>
 		</form>
 			<div id="foot">
-				<i>University of California Irvine </i><a href="http://www.uci.edu/">UCI</a>
-			</div>
+				<p><i>University of California Irvine </i><a href="http://www.uci.edu/">UCI</a>. (c) Copyright 2011. Jon Sprouse. All rights reserved.
+			</p></div>
 	</body>
 </html>
