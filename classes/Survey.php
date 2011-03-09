@@ -1,5 +1,4 @@
 <?php
-
 class Survey {
 	
 	public $surveyProperties = array();

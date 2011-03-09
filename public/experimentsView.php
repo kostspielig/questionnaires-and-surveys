@@ -132,7 +132,7 @@ $(document).ready(function(){
 										<tr><td><a href="experimentsView.php" >Close</a></td></tr></tr></table>';
 								echo'</td><td>'.$user->admin_id.'</td>';	
 								
-								echo '<td><a href="#" class="url">URL</a></td> 
+								echo '<td><a href="takeExperiment.php?filename='.$user->filename.'" class="url">URL</a></td> 
 									<td><a href="editExperiment.php?filename='.$user->filename.'" class="edit">Edit</a></td> 
 									<td><a href="#" class="delete">Delete</a><span class="delete-confirm-span">
 									 	<a href="deleteExperiment.php?id='.$user->exp_id.'" class="delete-confirm">Yes</a>

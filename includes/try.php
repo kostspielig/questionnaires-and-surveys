@@ -18,11 +18,11 @@ require_once '../classes/Model.php';
 //$e = new Experiment();
 //$e->loadExperimentFromExcelFile("Experiment A.xlsx");
 
-$m = new Model();
-$n = $m->getFilename(11);
+$database = new Database();
+$n = $database->getFilename(11);
 
 echo ($n != '0')? 'yes':'no';
-echo $m->getNumberOfSurveys(11);
+echo $database->getNumberOfSurveys(11);
 //echo $m->uploadExperiment($e,"Experimentoooooo A", "Experiment A.xlsx","jon");
 
 //$survey->printUser();
