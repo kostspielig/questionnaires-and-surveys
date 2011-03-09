@@ -1,4 +1,8 @@
 <?php
+////////////////////////////////////////
+// OUTDATED: Here only as a reference.
+////////////////////////////////////////
+
 include('SurveyGeneratorClass.php');
 session_start();
 

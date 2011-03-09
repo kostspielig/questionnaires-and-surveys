@@ -1,8 +1,6 @@
 <?php
-include_once '../includes/PHPExcel/IOFactory.php';
-include_once '../classes/Survey.php';
-include_once '../classes/Model.php';
-include_once '../classes/surveyDB.php';
+require_once '../includes/PHPExcel/IOFactory.php';
+require_once '../includes/classes.php';
 
 //TODO: check format, question spacing
 
@@ -31,8 +29,8 @@ class Experiment {
 	
 	// Incomplete
 	public function loadRandomSurveyFromDB($exp_id) {
-		$m = new Model();
-		$survey = $m->getFilename($exp_id);
+		$database = new Database();
+		$survey = $database->getFilename($exp_id);
 		
 		echo 'Test';
 		echo "<br/>$survey";
@@ -41,11 +39,9 @@ class Experiment {
 	
 	// Incomplete
 	public function loadExperimentFromDB($exp_id) {
-		$m = new Model();
+		$database = new Database();
 		//$surveyList =
 		
-		$surveyDB = new surveyDB();
-		$surveyDB->printExperiments($type);
 		
 
 		

@@ -1,5 +1,10 @@
 <?php
 
+////////////////////////////////////////
+// OUTDATED: Here only as a reference.
+////////////////////////////////////////
+
+
 class SurveyGeneratorClass {
 	
 	//where the first entry for survey item is in input file
