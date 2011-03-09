@@ -1,10 +1,10 @@
 <?php
 
 include_once 'auth.inc.php';
-require_once '../classes/Model.php';
+require_once '../classes/Database.php';
 
 $exp_id = $_GET['id'];
-$m = new Model();
+$m = new Database();
 
 $filename=$m->getFilename($exp_id);
 $s = $m->deleteExperiment($exp_id);

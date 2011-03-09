@@ -2,7 +2,7 @@
 
 include_once 'auth.inc.php';
 require_once '../classes/Experiment.php';
-require_once '../classes/Model.php';
+require_once '../classes/Database.php';
 
 if ($_FILES["file"]["type"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
 	if ($_FILES["file"]["error"] > 0) {
@@ -25,8 +25,8 @@ if ($_FILES["file"]["type"] == "application/vnd.openxmlformats-officedocument.sp
 			$experiment->loadExperimentFromExcelFile($_FILES["file"]["name"]);
 			
 			//Import Experiment to the database!	
-			$m = new Model();
-			$e = $m->uploadExperiment($experiment, $_POST['name'], $_FILES["file"]["name"], $_SESSION['login']);
+			$database = new Database();
+			$e = $database->uploadExperiment($experiment, $_POST['name'], $_FILES["file"]["name"], $_SESSION['login']);
 			if ($e != null)
 				$error = $e;
 			

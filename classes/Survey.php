@@ -11,6 +11,10 @@ class Survey {
 //	public function __contruct() {
 //		
 //	}
+
+	public function loadFromDB(Experiment $experiment) {
+		
+	}
 	
 	public function loadWorksheet($worksheet) {
 		

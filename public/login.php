@@ -7,9 +7,9 @@ $redirect = (isset($_REQUEST['redirect'])) ? $_REQUEST['redirect'] : 'dashboard.
 
 if (isset($_POST['submit'])){
 	if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1) {
-		require_once '..\classes\Model.php';
-		$model = new Model();
-		if ($model->checkUser($_POST['login'],$_POST['password'])) {
+		require_once '..\classes\Database.php';
+		$database = new Database();
+		if ($database->getUser($_POST['login'],$_POST['password'])) {
 			$_SESSION['login'] = $login;	
 			$_SESSION['logged'] = 1;
 			header('REFRESH: 5; URL='. $redirect);
