@@ -88,13 +88,13 @@ include 'auth.inc.php';
 						<div class="utils">
 							<a href="experimentsView.php">View More</a>
 						</div>
-						<?php require_once '../classes/surveyDB.php';
-							$survey = new surveyDB();
-							$survey->open(); 
+						<?php require_once '../classes/Database.php';
+							$database = new Database();
+							$database->open(); 
 							echo '<table> <tbody> <tr>';
-							$survey->printExperiments(0);
+							$database->printExperiments(0);
 							echo '</tbody> </table>';
-							$survey->close();?>
+							$database->close();?>
 					</div>
 				</div>
 			</div>

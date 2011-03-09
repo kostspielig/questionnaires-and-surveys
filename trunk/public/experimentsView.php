@@ -110,15 +110,15 @@ $(document).ready(function(){
 							</tr>
 						</tfoot>
 						<tbody>
-						<?php require_once '../classes/surveyDB.php';
+						<?php require_once '../classes/Database.php';
 						
 							function Up($m, $id) {
 								$m->deleteExperiment($id);
 							}
 							
-							$m = new surveyDB();
-							$m->open();
-							$result = $m->getExperiments();
+							$database = new Database();
+							$database->open();
+							$result = $database->getExperiments();
 							while($user = sqlite_fetch_object($result) ) {
 								echo ( ($user->exp_id % 2) ? '<tr>' : '<tr class="alt">' ).'<td>'.$user->exp_id.
 									'</td><td><a href="experimentsView.php?show='.$user->exp_id.'" class="show-properties">'.$user->name.'</a>';
@@ -128,7 +128,7 @@ $(document).ready(function(){
 										<tr><td>Administrator:</td><td>'.$user->admin_id.'</td></tr>
 										<tr><td>Experiment name:</td><td>'.$user->name.'</td></tr>
 										<tr><td>Filename:</td><td>'.$user->filename.'</td></tr>
-										<tr><td>Number of surveys:</td><td>'.$m->getNumberOfSurveys($user->exp_id) .'</td></tr>
+										<tr><td>Number of surveys:</td><td>'.$database->getNumberOfSurveys($user->exp_id) .'</td></tr>
 										<tr><td><a href="experimentsView.php" >Close</a></td></tr></tr></table>';
 								echo'</td><td>'.$user->admin_id.'</td>';	
 								
@@ -140,7 +140,7 @@ $(document).ready(function(){
 								echo '';
 								
 							}
-							$m->close();
+							$database->close();
 						?>
 						</tbody>
 				  </table>
