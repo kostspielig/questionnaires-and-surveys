@@ -12,7 +12,7 @@ if (isset($_POST['submit'])){
 		if ($database->getUser($_POST['login'],$_POST['password'])) {
 			$_SESSION['login'] = $login;	
 			$_SESSION['logged'] = 1;
-			header('REFRESH: 5; URL='. $redirect);
+			header('REFRESH: 2; URL='. $redirect);
 			echo '<p> You will be redirected to your original page request. </p>';
 			echo '<p> If your browser does\'t redirect you propertly ' . 'automatically, <a href = "'.$redirect.'"> click here</a>.</p>';
 			die();

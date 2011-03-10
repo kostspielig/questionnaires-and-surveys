@@ -55,8 +55,51 @@ include 'auth.inc.php';
 						<div class="utils">
 							<a href="template.php">View More</a>
 						</div>
-						<p><br/><strong>User : </strong> Professor Jon Sprouse<br/><br/><strong>Date : </strong> <?php echo date("Y.m.d") ?> </b><br/><br/><strong><a href="logout.php">Logout </a> </strong> </b></p><br/>
+						<p><br/><strong>User : </strong> Professor Jon Sprouse<br/><br/><strong>Date : </strong> <?php echo date("Y.m.d") ?> </b><br/></b></p><br/>
 					</div>
+					
+					<div class="box">
+					<h2>Change Password</h2>
+					<form method="post" action="<?php $_SERVER['PHP_SELF']?>">
+					Old password: <input type="text" name="oldPass">
+					New password: <input type="text" name="newPass"/>
+					<input type="submit" name="submit" value="submit"/>
+					</form>
+					<?php
+   						if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+   							require_once '../classes/Database.php';
+   							$d = new Database();
+   							$res = $d->changePassword($_SESSION['login'],$_POST['oldPass'] ,$_POST['newPass']);
+	   						error_reporting(0);
+	   						
+							if ($res == "error")
+								echo '<p class="error">Incorrect Password, try again!</p>';
+							else if ($res =="success")
+								echo '<p class="success">Password correctly changed to '.$_POST['newPass'].'</p>';
+						}
+					?>
+					
+					
+					</div>
+					
+				</div>
+				
+				<div class="grid_10">
+					
+					<div class="box">
+						<h2>Experiments</h2>
+						<div class="utils">
+							<a href="experimentsView.php">View More</a>
+						</div>
+						<?php require_once '../classes/Database.php';
+							$database = new Database();
+							$database->open(); 
+							echo '<table> <tbody> <tr>';
+							$database->printExperiments(0);
+							echo '</tbody> </table>';
+							$database->close();?>
+					</div>
+					
 					<div class="box">
 						<h2>Upload Experiment</h2>
 						<div class="utils">
@@ -79,22 +122,6 @@ include 'auth.inc.php';
 							</tbody> </tr>
 						</table>
 						</form>
-					</div>
-				</div>
-				<div class="grid_10">
-					
-					<div class="box">
-						<h2>Experiments</h2>
-						<div class="utils">
-							<a href="experimentsView.php">View More</a>
-						</div>
-						<?php require_once '../classes/Database.php';
-							$database = new Database();
-							$database->open(); 
-							echo '<table> <tbody> <tr>';
-							$database->printExperiments(0);
-							echo '</tbody> </table>';
-							$database->close();?>
 					</div>
 				</div>
 			</div>
