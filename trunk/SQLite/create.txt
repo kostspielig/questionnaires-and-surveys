@@ -1,11 +1,4 @@
-DROP TABLE answer;
-DROP TABLE user_answer;
-DROP TABLE user_questions;
-DROP TABLE participant;
-DROP TABLE question;
-DROP TABLE survey;
-DROP TABLE experiment;
-DROP TABLE administrator;
+
 
 CREATE TABLE administrator (
 	admin_id TEXT UNIQUE PRIMARY KEY, 

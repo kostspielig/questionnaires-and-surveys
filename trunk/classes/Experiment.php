@@ -34,15 +34,12 @@ class Experiment {
 		
 		echo 'Test';
 		echo "<br/>$survey";
-		
 	}
 	
 	// Incomplete
 	public function loadExperimentFromDB($exp_id) {
 		$database = new Database();
 		//$surveyList =
-		
-		
 
 		
 	}

@@ -1,15 +1,11 @@
 <?php
-require_once '../classes/dbController.php';
-require_once '../classes/surveyDB.php';
+require_once '../classes/Database.php';
 require_once '../classes/Experiment.php';
-require_once '../classes/Model.php';
 
-//$new_db = new dbController();
-//$new_db->createDB();
 
-//$survey = new surveyDB();
-//$survey->open();
-//$survey->insert("administrator","'jon', 'admin'");
+$database = new Database();
+
+//
 //$survey->insertExperiment("NULL ,'jon', 'experimentA', 'FILENAME.xlsx'");
 //$survey->insertExperiment("NULL ,'jon', 'experimentB', 'FILENAME.xlsx'");
 //$name = "experiment CD ";
@@ -18,11 +14,15 @@ require_once '../classes/Model.php';
 //$e = new Experiment();
 //$e->loadExperimentFromExcelFile("Experiment A.xlsx");
 
-$database = new Database();
-$n = $database->getFilename(11);
+//$database->createEmptySQLite3();
+//$database->insertAdministrator('jon', 'admin');
 
-echo ($n != '0')? 'yes':'no';
-echo $database->getNumberOfSurveys(11);
+$database->printUser();
+//$database->changePassword('jon', 'admin');
+//$database->printUser();
+//$n = $database->getFilename(11);
+
+//echo $database->getNumberOfSurveys(11);
 //echo $m->uploadExperiment($e,"Experimentoooooo A", "Experiment A.xlsx","jon");
 
 //$survey->printUser();
