@@ -2,31 +2,36 @@
 class Database
 {
     // property declaration
+    public $file;
     public $name;
 	private $dbhandle;
+	
     // constructor
-    public function __construct() {
-        $this->name = "../SQLite/database.db";
-    }
+	public function __construct() {
+		$this->file = '../SQLite/create.txt';
+		$f = fopen("$this->file", 'r');
+		$this->file = fread($f, filesize($this->file ));
+		fclose($f);
+	}
     
     //Create a new database
     // Warning: Overwrites current database
     public function createEmptySQLite() {
-    	$fileHandle = fread($f, filesize('../SQLite/create.txt'));
-    	$dbHandle = sqlite_open("../SQLite/database.db", 0666, $error);
-		if (!$dbHandle) die ($error);
-		$ok = sqlite_exec($dbHandle, $fileHandle, $error);
-		if (!$ok) die("Cannot execute query. $error");
-		echo "Database created successfully";
-		sqlite_close($dbHandle);
+    	$this->name = "../SQLite/database.db";
+    	$dbhandle = sqlite_open("$this->name", 0666, $error);
+    	if (!$dbhandle) die ($error);
+    	$ok = sqlite_exec($dbhandle, $this->file, $error);
+    	if (!$ok) die("Cannot execute query. $error");
+    	echo "Database created successfully";
+    	sqlite_close($dbhandle);
     }
     
     //Create a new database using SQLite3 format instead of SQLite2
     // Warning: Overwrites current database
     public function createEmptySQLite3() {
-    	$name = "../SQLite/database.db3";
+    	$this->name = "../SQLite/database.db3";
     	try {
-    		$db = new PDO('sqlite:'.$name);
+    		$db = new PDO('sqlite:'.$this->name);
     		$db->exec($this->file);
     		$db = NULL;
     	} catch(PDOException $e) {
