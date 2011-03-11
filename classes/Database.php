@@ -118,6 +118,79 @@ class Database
 		return $result;
 	}
 	
+	// Queries the database and returns survey object
+	public function	getRandomSurveyFromExperiment($exp_id){
+		$this->open();
+		
+		//get random sur_id
+		// TODO: needs to be updated to support non-sequential exp_id's
+		$sur_id = rand(1, $this->getNumberOfSurveys($exp_id));
+		
+		$result = sqlite_query($this->dbhandle, "SELECT * FROM survey WHERE exp_id='$exp_id' AND sur_id='$sur_id'");
+		if (!$result) die ("Cannot execute query.");
+		$row = sqlite_fetch_array($result);
+		//var_dump($row);
+		
+		$survey = new Survey();
+		$survey->surveyProperties["name"] = $row["name"];
+		$survey->surveyProperties["outputFilename"] = $row["output_filename"];
+		$survey->surveyProperties["cssFilename"] = $row["css_filename"];
+		$survey->surveyProperties["thankYouPage"] = $row["thank_you_page"];
+
+		$survey->surveyProperties["surveyTableProperties_questionsPerPage"] = $row["questions_per_page"];
+		$survey->surveyProperties["surveyTableProperties_pseudoRandomWidth"] = $row["pseudo_random_width"];
+		$survey->surveyProperties["surveyTableProperties_width"] = $row["table_width"];
+		$survey->surveyProperties["surveyTableProperties_alignment"] = $row["table_alignment"];
+		$survey->surveyProperties["surveyTableProperties_borderThickness"] = $row["table_border_thickness"];
+		$survey->surveyProperties["surveyTableProperties_cellPadding"] = $row["table_cell_padding"];
+		$survey->surveyProperties["surveyTableProperties_cellSpacing"] = $row["table_cell_spacing"];
+
+		$survey->surveyProperties["headerProperties_customHeader"] = $row["custom_header"];
+		$survey->surveyProperties["headerProperties_leftTitle"] = $row["header_left_title"];
+		$survey->surveyProperties["headerProperties_rightTitle"] = $row["header_right_title"];
+		$survey->surveyProperties["headerProperties_alignment"] = $row["header_alignment"];
+		$survey->surveyProperties["headerProperties_borderThickness"] = $row["header_border_thickness"];
+		$survey->surveyProperties["headerProperties_padding"] = $row["header_padding"];
+		$survey->surveyProperties["headerProperties_spacing"] = $row["header_spacing"];
+
+		$survey->surveyProperties["surveyLeftColumnProperties_width"] = $row["left_column_width"];
+		$survey->surveyProperties["surveyLeftColumnProperties_alignment"] = $row["left_column_alignment"];
+		$survey->surveyProperties["surveyLeftColumnProperties_borderThickness"] = $row["left_column_border_thickness"];
+		$survey->surveyProperties["surveyLeftColumnProperties_padding"] = $row["left_column_padding"];
+		$survey->surveyProperties["surveyLeftColumnProperties_spacing"] = $row["left_column_spacing"];
+		
+		$survey->surveyProperties["surveyRightColumnProperties_width"] = $row["right_column_width"];
+		$survey->surveyProperties["surveyRightColumnProperties_alignment"] = $row["right_column_alignment"];
+		$survey->surveyProperties["surveyRightColumnProperties_borderThickness"] = $row["right_column_border_thickness"];
+		$survey->surveyProperties["surveyRightColumnProperties_padding"] = $row["right_column_padding"];
+		$survey->surveyProperties["surveyRightColumnProperties_spacing"] = $row["right_column_spacing"];
+		
+		$survey->surveyProperties["paginationTextProperties_view"] = $row["pagination_text_view"];
+		$survey->surveyProperties["paginationTextProperties_alignment"] = $row["pagination_text_alignment"];
+		$survey->surveyProperties["paginationTextProperties_position"] = $row["pagination_text_position"];
+		
+		$survey->surveyProperties["paginationButtonsTableProperties_width"] = $row["pagination_buttons_width"];
+		$survey->surveyProperties["paginationButtonsTableProperties_alignment"] = $row["pagination_buttons_alignment"];
+		$survey->surveyProperties["paginationButtonsTableProperties_borderThickness"] = $row["pagination_buttons_border_thickness"];
+		$survey->surveyProperties["paginationButtonsTableProperties_padding"] = $row["pagination_buttons_padding"];
+		$survey->surveyProperties["paginationButtonsTableProperties_spacing"] = $row["pagination_buttons_spacing"];
+		
+		$result = sqlite_query($this->dbhandle, "SELECT * FROM question WHERE sur_id='$sur_id'");
+		if (!$result) die ("Cannot execute query.");
+		$row = "blank";
+		//var_dump($row);
+		while ($row != null) {
+			$row = sqlite_fetch_array($result);
+			//var_dump($row);
+			$survey->surveyItemCodes[$row['que_id']] = $row['item_code'];
+			$survey->surveyItems[$row['que_id']] = $row['item'];
+			$survey->surveyResponseTypes[$row['que_id']] = $row['response_type'];
+		}
+		
+		$this->close();
+		return $survey;
+	}
+	
 	public function deleteExperiment($exp_id) {
 		$this->open();
 		$result = sqlite_query($this->dbhandle,"DELETE FROM experiment WHERE exp_id = '$exp_id'");
