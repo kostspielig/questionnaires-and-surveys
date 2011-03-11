@@ -31,11 +31,11 @@ class Database
     //Create a new database using SQLite3 format instead of SQLite2
     // Warning: Overwrites current database
     public function createEmptySQLite3() {
-        $this->name = "../SQLite/database.db3";
+    	$this->read_file();
         try {
-                $db = new PDO('sqlite:'.$this->name);
-                $db->exec($this->file);
-                $db = NULL;
+         	$db = new PDO('sqlite:'.$this->name);
+            $db->exec($this->file);
+            $db = NULL;
         } catch(PDOException $e) {
                 print 'Exception: '.$e->getMessage();
         }
@@ -213,6 +213,13 @@ class Database
 		if (!$result) die ("Cannot execute query.");
 		$row = sqlite_fetch_array($result);
 		return ($row!=NULL)? $row['COUNT(exp_id)']:'0';
+	}
+	
+	public function getSurveys($exp_id) {
+		$result = sqlite_query($this->dbhandle, "SELECT * FROM survey WHERE exp_id='$exp_id'");
+		if (!$result) die ("Cannot execute query.");
+		return $result;
+		
 	}
 	
 	public function printUser(){
