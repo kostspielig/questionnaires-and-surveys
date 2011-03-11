@@ -123,13 +123,23 @@ $(document).ready(function(){
 								echo ( ($user->exp_id % 2) ? '<tr>' : '<tr class="alt">' ).'<td>'.$user->exp_id.
 									'</td><td><a href="experimentsView.php?show='.$user->exp_id.'" class="show-properties">'.$user->name.'</a>';
 								if (isset($_GET['show']))
-									if ($_GET['show'] == $user->exp_id)
-								echo '<table class="show-properties-span"><tr><td>Experiment Id:</td><td>'.$user->exp_id.'</td></tr>
-										<tr><td>Administrator:</td><td>'.$user->admin_id.'</td></tr>
-										<tr><td>Experiment name:</td><td>'.$user->name.'</td></tr>
-										<tr><td>Filename:</td><td>'.$user->filename.'</td></tr>
-										<tr><td>Number of surveys:</td><td>'.$database->getNumberOfSurveys($user->exp_id) .'</td></tr>
-										<tr><td><a href="experimentsView.php" >Close</a></td></tr></tr></table>';
+									if ($_GET['show'] == $user->exp_id){
+										echo '<table class="show-properties-span"><tr><td>Experiment Id:</td><td>'.$user->exp_id.'</td></tr>
+											<tr><td>Administrator:</td><td>'.$user->admin_id.'</td></tr>
+											<tr><td>Experiment name:</td><td>'.$user->name.'</td></tr>
+											<tr><td>Filename:</td><td>'.$user->filename.'</td></tr>';
+											$num = $database->getNumberOfSurveys($user->exp_id);
+										echo '<tr><td>Number of surveys:</td><td>'.$num .'</td></tr>';
+										if ($num != 0){
+											$res = $database->getSurveys($user->exp_id);
+											$i = 1;
+											while ($sur = sqlite_fetch_object($res)) {
+												echo '<tr><td>Survey '.$i.': </td><td>'.$sur->name.'</td></tr>';
+												$i++;
+											}
+										}
+										echo '<tr><td><a href="experimentsView.php" >Close</a></td></tr></tr></table>';
+									}
 								echo'</td><td>'.$user->admin_id.'</td>';	
 								
 								echo '<td><a href="takeExperiment.php?exp_id='.$user->exp_id.'" class="url">URL</a></td> 
