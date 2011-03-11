@@ -105,7 +105,7 @@ $(document).ready(function(){
 						<tfoot>
 							<tr>
 								<td colspan="5" class="pagination">
-									<span class="active curved">1</span><a href="#" class="curved">2</a><a href="#" class="curved">3</a><a href="#" class="curved">4</a> ... <a href="#" class="curved">9</a>
+									<!-- <span class="active curved">1</span><a href="#" class="curved">2</a><a href="#" class="curved">3</a><a href="#" class="curved">4</a> ... <a href="#" class="curved">9</a> -->
 								</td>
 							</tr>
 						</tfoot>
@@ -132,8 +132,8 @@ $(document).ready(function(){
 										<tr><td><a href="experimentsView.php" >Close</a></td></tr></tr></table>';
 								echo'</td><td>'.$user->admin_id.'</td>';	
 								
-								echo '<td><a href="takeExperiment.php?filename='.$user->filename.'" class="url">URL</a></td> 
-									<td><a href="editExperiment.php?filename='.$user->filename.'" class="edit">Edit</a></td> 
+								echo '<td><a href="takeExperiment.php?exp_id='.$user->exp_id.'" class="url">URL</a></td> 
+									<td><a href="editExperiment.php?filename='.$user->filename.'" class="edit">Download</a></td> 
 									<td><a href="#" class="delete">Delete</a><span class="delete-confirm-span">
 									 	<a href="deleteExperiment.php?id='.$user->exp_id.'" class="delete-confirm">Yes</a>
 									 	<a href="#" class="no-confirm-delete">No</a></span></td></tr>';
