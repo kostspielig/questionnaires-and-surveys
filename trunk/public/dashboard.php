@@ -32,7 +32,7 @@ include 'auth.inc.php';
 	</head>
 	<body>
 
-		<h1 id="head">COGNITI<FONT COLOR="#FDF3C1">VE</FONT><font style="font-size:120%"> S</font>UR<FONT COLOR="#FDF3C1">VEYS</FONT></h1>
+		<h1 id="head"><FONT COLOR="#FDF3C1">C</FONT>OGNITIVE<font  COLOR="#FDF3C1" style="font-size:120%"> S</font><FONT COLOR="#FDF3C1">URVEYS</FONT></h1>
 		
 		<ul id="navigation">
 			<li><span class="active">Admin</span></li>
@@ -106,7 +106,7 @@ include 'auth.inc.php';
 						<form method="post" action="getExperiment.php" enctype="multipart/form-data">
 							<tbody>
 							<tr> <td> <p></p>
-							<label for="file">Experminent name<small></small></label>
+							<label for="file">Experminent description<small></small></label>
 							<input type="text" name="name"> </input></p>
 							<input type="file"  name="file" value="file"/> </td></tr>
 							
