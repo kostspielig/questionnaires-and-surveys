@@ -6,10 +6,7 @@ class Survey {
 	public $surveyItemCodes = array();
 	public $surveyItems = array();
 	public $surveyResponseTypes = array();
-	
-//	public function __contruct() {
-//		
-//	}
+	public $questions = array();
 
 	public function loadFromDB(Experiment $experiment) {
 		
@@ -73,6 +70,12 @@ class Survey {
 		$count += 2;
 		$question = 0;
 		while ($worksheet->getCell("A".$count)->getValue() != "") {
+			$question = new Question("", "");
+			$question = new Question(
+				$worksheet->getCell("A".$count)->getValue(),
+				$worksheet->getCell("B".$count)->getValue(),
+				$worksheet->getCell("C".$count)->getValue()
+			);
 			$this->surveyItemCodes[$question] = $worksheet->getCell("A".$count)->getValue();
 			$this->surveyItems[$question] = $worksheet->getCell("B".$count)->getValue();
 			$this->surveyResponseTypes[$question] = $worksheet->getCell("C".$count)->getValue();
