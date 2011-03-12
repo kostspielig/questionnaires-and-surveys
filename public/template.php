@@ -7,7 +7,7 @@ include 'auth.inc.php';
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<?php include '../includes/head.php' ?>
 	<body>
-		<h1 id="head">COGNITI<FONT COLOR="#FDF3C1">VE</FONT><font style="font-size:120%"> S</font>UR<FONT COLOR="#FDF3C1">VEYS</FONT></h1>
+		<h1 id="head"><FONT COLOR="#FDF3C1">C</FONT>OGNITIVE<font  COLOR="#FDF3C1" style="font-size:120%"> S</font><FONT COLOR="#FDF3C1">URVEYS</FONT></h1>
 
 		<ul id="navigation">
 			<li><a href="dashboard.php">Admin</a></li>
