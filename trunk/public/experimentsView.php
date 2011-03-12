@@ -55,18 +55,18 @@ $(document).ready(function(){
 
 
                 <p><h2>Upload Experiment</h2></p>
-				<div class="grid_4">
+				<div class="grid_9">
 					<p>
 						<label for="file">Experiment description<small></small></label>
 						<input type="text" name="name" />
 					</p>
 				</div>
-				<div class="grid_5">
+				<!-- <div class="grid_5">
 					<p>
 						<label>Type</label>
 						<input type="text" />
 					</p>
-				</div>
+				</div> -->
 				<div class="grid_5">
 					<p>
 						<label>&nbsp;</label>
