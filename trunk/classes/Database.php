@@ -7,7 +7,7 @@ class Database
     private $dbhandle;
         
     // constructor
-    public function __construct($type = 2) {
+    public function Database($type = 2) {
         $this->name = ($type == 3)? "../SQLite/database.db": "../SQLite/database.db";
     }
     
