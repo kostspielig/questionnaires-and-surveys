@@ -3,7 +3,7 @@ require_once '../classes/Database.php';
 require_once '../classes/Experiment.php';
 
 
-$database = new Database();
+$database = new Database(3);
 
 //
 //$survey->insertExperiment("NULL ,'jon', 'experimentA', 'FILENAME.xlsx'");
@@ -15,7 +15,8 @@ $database = new Database();
 //$e->loadExperimentFromExcelFile("Experiment A.xlsx");
 
 //$database->createEmptySQLite3();
-//$database->insertAdministrator('jon', 'admin');
+$database->createEmptySQLite3();
+$database->insertAdministrator('jonny', 'admin');
 
 $database->printUser();
 //$database->changePassword('jon', 'admin');

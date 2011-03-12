@@ -8,8 +8,9 @@ class Database
         
     // constructor
     public function __construct($type = 2) {
-        $this->name = ($type == 3)? "../SQLite/database.db3": "../SQLite/database.db";
+        $this->name = ($type == 3)? "../SQLite/database.db": "../SQLite/database.db";
     }
+    
     public function read_file() {
     	$f = fopen("$this->file", 'r');
         $this->file = fread($f, filesize($this->file ));
@@ -19,7 +20,6 @@ class Database
     // Warning: Overwrites current database
     public function createEmptySQLite() {
     	$this->read_file();
-        $this->name = "../SQLite/database.db";
         $dbhandle = sqlite_open("$this->name", 0666, $error);
         if (!$dbhandle) die ($error);
         $ok = sqlite_exec($dbhandle, $this->file, $error);
@@ -39,6 +39,7 @@ class Database
         } catch(PDOException $e) {
                 print 'Exception: '.$e->getMessage();
         }
+        echo "Database created successfully";
     }
 
     public function open () {	
@@ -191,9 +192,15 @@ class Database
 		return $survey;
 	}
 	
+	public function extractAnswers($exp_id) {
+		return True;
+	}
+	
 	public function deleteExperiment($exp_id) {
 		$this->open();
 		$result = sqlite_query($this->dbhandle,"DELETE FROM experiment WHERE exp_id = '$exp_id'");
+		if (!$result) die("Cannot execute delete query.");
+		$result = sqlite_query($this->dbhandle,"DELETE FROM survey WHERE exp_id = '$exp_id'");
 		if (!$result) die("Cannot execute delete query.");
 		$this->close();
 		return "success";
