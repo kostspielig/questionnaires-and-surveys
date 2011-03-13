@@ -24,14 +24,6 @@ $database->printUser();
 $m = date('m/d/y h:ia' );
 echo $m;
 */
-//$database->changePassword('jon', 'admin');
-//$database->printUser();
-//$n = $database->getFilename(11);
 
-//echo $database->getNumberOfSurveys(11);
-//echo $m->uploadExperiment($e,"Experimentoooooo A", "Experiment A.xlsx","jon");
 
-//$survey->printUser();
-//$survey->printExperiments(0);
-//$survey->close();
 ?>

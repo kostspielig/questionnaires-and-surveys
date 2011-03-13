@@ -221,7 +221,49 @@ class Database
 		return $survey;
 	}
 	
-	public function extractAnswers($exp_id) {
+	public function extractAnswersToCVS($exp_id, $name) {
+		$this->open();
+		
+		$result = sqlite_query($this->dbhandle,"SELECT * FROM survey WHERE exp_id = $exp_id");
+		if (!$result) die("Cannot execute query.");
+
+		$list = array();
+		
+		while($sur = sqlite_fetch_object($result))
+		{
+			$title = $name.'_'.$sur->name;
+			$fp = fopen($title, 'w');
+			
+			$res2 = sqlite_query($this->dbhandle,"SELECT * FROM participant WHERE sur_id = $sur->sur_id");
+			if (!$res2) die("Cannot execute query.");  
+			$i = 1;
+			while($par = sqlite_fetch_object($res2)) {
+				//print user personal answers
+				/*$res3 = sqlite_query($this->dbhandle, "SELECT * FROM user_answer WHERE part_id = $par->part_id");
+				if (!$res3) die("Cannot execute query.");
+				while($u_ans = sqlite_fetch_object($res3)) {
+					//TODO finish
+					$list[] = array($par->part_id, $u_ans->);
+					
+				}*/
+				
+				//print answers to questions
+				$res4 = sqlite_query($this->dbhandle, "SELECT * FROM answer WHERE part_id = $par->part_id");
+				if (!$res4) die("Cannot execute query.");
+				while($ans = sqlite_fetch_object($res4)) {
+					$list[] = array($i, $ans->date, $ans->position, $ans->item_code, $ans->answer);
+				}
+				$i ++;
+			}
+			
+			foreach ($list as $fields) {
+    			fputcsv($fp, $fields);
+			}
+			
+			fclose($fp);
+		}
+		
+		$this->close();
 		return True;
 	}
 	
