@@ -94,6 +94,7 @@ CREATE TABLE user_answer (
 	part_id INTEGER NOT NULL,
 	user_question_id INTEGER NOT NULL,
 	answer TEXT,
+	date TEXT,
 	FOREIGN KEY (part_id) REFERENCES participant(part_id)
 		ON DELETE CASCADE,
 	FOREIGN KEY (user_question_id) REFERENCES user_questions(user_question_id)
@@ -105,6 +106,7 @@ CREATE TABLE answer (
 	an_id INTEGER PRIMARY KEY,
 	part_id INTEGER NOT NULL,
 	que_id INTEGER NOT NULL,
+	item_code TEXT NOT NULL,
 	answer TEXT,
 	date TEXT,
 	position INTEGER,
