@@ -135,17 +135,17 @@ class Database
 			$row = sqlite_fetch_array($result);
 		}
 		
-		//pick one with lest reponses, then random
-		$sur_id = array_rand($surveys, 1);
+		//pick ones with least reponses, then randomize
 		
-		var_dump($sur_id);
-		echo '$sur_id: ',$sur_id;
+		$sur_id = $surveys[array_rand($surveys, 1)];
+		
+		//var_dump($sur_id);
+		//echo '$sur_id: ',$sur_id;
 		
 		$result = sqlite_query($this->dbhandle, "SELECT * FROM survey WHERE exp_id='$exp_id' AND sur_id='$sur_id'");
 		if (!$result) die ("Cannot execute query.");
-		var_dump($result);
 		$row = sqlite_fetch_array($result);
-		var_dump($row);
+		//var_dump($row);
 		
 		$survey = new Survey();
 		$survey->surveyProperties["name"] = $row["name"];
@@ -155,6 +155,7 @@ class Database
 
 		$survey->surveyProperties["surveyTableProperties_questionsPerPage"] = $row["questions_per_page"];
 		$survey->surveyProperties["surveyTableProperties_pseudoRandomWidth"] = $row["pseudo_random_width"];
+		$survey->surveyProperties["surveyTableProperties_numberNonRandom"] = $row["numberNonRandom"]; //TODO check
 		$survey->surveyProperties["surveyTableProperties_width"] = $row["table_width"];
 		$survey->surveyProperties["surveyTableProperties_alignment"] = $row["table_alignment"];
 		$survey->surveyProperties["surveyTableProperties_borderThickness"] = $row["table_border_thickness"];
@@ -297,6 +298,14 @@ class Database
 	
 	public function getNumberOfSurveys($exp_id) {
 		$result = sqlite_query($this->dbhandle, "SELECT COUNT(exp_id) FROM survey WHERE exp_id='$exp_id'");
+		if (!$result) die ("Cannot execute query.");
+		$row = sqlite_fetch_array($result);
+		return ($row!=NULL)? $row['COUNT(exp_id)']:'0';
+	}
+	
+	//TODO
+	public function getNumberOfReponses($exp_id, $sur_id) {
+		$result = sqlite_query($this->dbhandle, "SELECT COUNT(an_id) FROM answer WHERE exp_id='$exp_id'");
 		if (!$result) die ("Cannot execute query.");
 		$row = sqlite_fetch_array($result);
 		return ($row!=NULL)? $row['COUNT(exp_id)']:'0';
