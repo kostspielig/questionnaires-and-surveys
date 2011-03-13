@@ -221,6 +221,14 @@ class Database
 		return $survey;
 	}
 	
+	public function getItemCode($que_id) {
+		$res = sqlite_query($this->dbhandle, "SELECT item_code FROM question WHERE que_id = $que_id");
+		if (!$result) die("Cannot execute query.");
+		$row = sqlite_fetch_object($result);
+		
+		return ($row!= null)?$res:0;
+	}
+	
 	public function extractAnswersToCVS($exp_id, $name) {
 		$this->open();
 		
@@ -248,10 +256,11 @@ class Database
 				}*/
 				
 				//print answers to questions
-				$res4 = sqlite_query($this->dbhandle, "SELECT * FROM answer WHERE part_id = $par->part_id");
+				$res4 = sqlite_query($this->dbhandle, "SELECT * FROM answer WHERE part_id = $par->part_id ORDER BY positions DESC");
 				if (!$res4) die("Cannot execute query.");
 				while($ans = sqlite_fetch_object($res4)) {
-					$list[] = array($i, $ans->date, $ans->position, $ans->item_code, $ans->answer);
+					$item_code = getItemCode($ans->que_id);
+					$list[] = array($i, $ans->date, $ans->position, $item_code, $ans->answer);
 				}
 				$i ++;
 			}
