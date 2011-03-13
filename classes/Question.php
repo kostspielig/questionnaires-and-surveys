@@ -1,18 +1,25 @@
 <?php
+/**
+ * The Question class encompasses two types of questions. A UserQuestion is
+ * for questions that involve user information, such as age, sex, etc. The
+ * SurveyQuestion class is for regular survey questions. These need to be
+ * separated since they encapsulate different information.
+ * 
+ * @author Kevin Brotcke <brotcke@gmail.com>
+ * @package classes
+ */
 class Question {
 	public function toString()
     {
-    	var_dump($this);
+    	return var_export($this, TRUE);
     }
 }
 
-// This class is for reguler survey questions
 class SurveyQuestion extends Question {
 	public $itemCode;
 	public $item;
 	public $responseType;
 	public $response;
-	//TODO: public $date;
 	
 	public function SurveyQuestion() {
 		// Allows for overloaded constructors
@@ -31,7 +38,6 @@ class SurveyQuestion extends Question {
     }
 }
 
-// This class is for questions pertaining to user info such as age, sex, etc.
 class UserQuestion extends Question {
 	public $userItem;
 	public $userResponse;
@@ -44,6 +50,11 @@ class UserQuestion extends Question {
             call_user_func_array(array($this,$f),$a); 
         }
 	}
+	
+	function UserQuestion1($userItem) 
+    { 
+        $this->userItem = $userItem;
+    }
 	
 	function UserQuestion2($userItem, $userResponse) 
     { 
