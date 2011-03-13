@@ -74,7 +74,5 @@ for ($i=0; $i<$count; $i++) {
 
 echo '</table>';
 
-echo $survey->toString();
-
 echo '</form>';
 ?>
