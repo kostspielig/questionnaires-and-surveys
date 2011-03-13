@@ -9,6 +9,7 @@ $survey = $database->getRandomSurveyFromExperiment($_GET['exp_id']);
 
 //var_dump(get_defined_vars());
 
+echo '<form>';
 echo '<table id="PHPSurveyGenerator_Survey_Table" ';
 	if ($survey->surveyProperties['surveyTableProperties_alignment']) {echo 'align="',$survey->surveyProperties['surveyTableProperties_alignment'],'" ';}
 	if ($survey->surveyProperties['surveyTableProperties_width']) {echo 'width="',$survey->surveyProperties['surveyTableProperties_width'],'" ';}
@@ -51,19 +52,18 @@ for ($i=0; $i<$count; $i++) {
 	
 	//prints type of response
 	if ($survey->surveyQuestions[$i]->responseType == ResponseType::YES_NO) {
-		echo '<input type="radio" value"Yes">Yes</input>';
+		echo '<input type="radio" name="',$i,'" value"Yes">Yes</input>';
 		echo '&nbsp&nbsp&nbsp';
-		echo '<input type="radio" value"No">No</input>';
-		echo '&nbsp&nbsp&nbsp';
+		echo '<input type="radio" name="',$i,'" value"No">No</input>';
 	}
 	else if ($survey->surveyQuestions[$i]->responseType == ResponseType::INPUT_BOX) {
-		echo '<input name="" type="text" value="" size="15" />';
+		echo '<input name="',$i,'" type="text" value="" size="15" />';
 	}
 	else {
 		$selectBoxCount = $survey->surveyQuestions[$i]->responseType;
 		$value = 1;
 		for ( $j = 1; $j<=$selectBoxCount; $j++) {
-			echo '<input type="radio" value="',$value,'">',$j,'</input>';
+			echo '<input type="radio" name="',$i,'" value="',$value,'">',$j,'</input>';
 			echo '&nbsp&nbsp&nbsp';
 			$value++;
 		}
@@ -74,4 +74,7 @@ for ($i=0; $i<$count; $i++) {
 
 echo '</table>';
 
+echo $survey->toString();
+
+echo '</form>';
 ?>

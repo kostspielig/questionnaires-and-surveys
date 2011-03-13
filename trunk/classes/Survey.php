@@ -31,7 +31,7 @@ class Survey {
 	public $date;
 	
 	public function Survey() {
-		$date = date('m/d/y h:ia');
+		$this->date = date('m/d/y h:ia');
 	}
 	
 	/**
@@ -105,7 +105,7 @@ class Survey {
 		$this->surveyProperties["paginationButtonsTableProperties_spacing"] = $worksheet->getCell('B48')->getValue();
 		
 		// Loads user info questions
-		$count = constant("USER_QUESTION_START_LINE");
+		$count = Survey::USER_QUESTION_START_LINE;
 		$cellValue = $worksheet->getCell('A'.$count)->getValue();
 		while ($cellValue != "") {
 			$this->userQuestions[] = new UserQuestion(
@@ -129,6 +129,8 @@ class Survey {
 			$count++;
 			$cellValue = $worksheet->getCell('A'.$count)->getValue();
 		}
+		
+		//echo $this->toString();
 	}
 	
 	public function toString() {
