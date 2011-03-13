@@ -232,15 +232,16 @@ class Database
 	
 	public function extractAnswersToCVS($exp_id, $name) {
 		$this->open();
-		
 		$result = sqlite_query($this->dbhandle,"SELECT * FROM survey WHERE exp_id = $exp_id");
 		if (!$result) die("Cannot execute query.");
 
 		$list = array();
+		$files = array();
 		
 		while($sur = sqlite_fetch_object($result))
 		{
-			$title = $name.'_'.$sur->name;
+			$title = '../results/'.$name.'_'.$sur->name.'.csv';
+			$files[] = $title;
 			$fp = fopen($title, 'w');
 			
 			$res2 = sqlite_query($this->dbhandle,"SELECT * FROM participant WHERE sur_id = $sur->sur_id");
@@ -274,7 +275,7 @@ class Database
 		}
 		
 		$this->close();
-		return True;
+		return $files;
 	}
 	
 	public function deleteExperiment($exp_id) {
