@@ -11,8 +11,14 @@
 class Question {
 	public function toString()
     {
-    	return var_export($this, TRUE);
+    	return var_dump($this);
     }
+}
+
+class ResponseType {
+	const YES_NO = 'Yes/No';
+	const INPUT_BOX = 'Input Box';
+	// or Integer
 }
 
 class SurveyQuestion extends Question {
