@@ -54,7 +54,7 @@ include 'auth.inc.php';
 						<div class="utils">
 							<a href="template.php">View More</a>
 						</div>
-						<p><br/><strong>User : </strong> Professor Jon Sprouse<br/><br/><strong>Date : </strong> <?php echo date("Y.m.d") ?> </b><br/></b></p><br/>
+						<p><br/><strong>User : </strong> <?php echo $_SESSION['login']?><br/><br/><strong>Date : </strong> <?php echo date("Y.m.d") ?> </b><br/></b></p><br/>
 					</div>
 					
 					<div class="box">
@@ -129,7 +129,7 @@ include 'auth.inc.php';
                 	<!--
 					<a href="#">Contact Me</a>
                     -->
-                    (c) Copyright 2011. Jon Sprouse. All rights reserved.
+                    (c) Copyright 2011. All rights reserved.
                     
 				</div>
 			</div>

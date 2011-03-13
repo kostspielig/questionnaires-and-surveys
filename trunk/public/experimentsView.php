@@ -159,7 +159,7 @@ $(document).ready(function(){
 			</div>
 		</form>
 			<div id="foot">
-				<p><i>University of California Irvine </i><a href="http://www.uci.edu/">UCI</a>. (c) Copyright 2011. Jon Sprouse. All rights reserved.
+				<p><i>University of California Irvine </i><a href="http://www.uci.edu/">UCI</a>. (c) Copyright 2011. All rights reserved.
 			</p></div>
 	</body>
 </html>
