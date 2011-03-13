@@ -1,4 +1,6 @@
 <?php
+require_once '../includes/classes.php';
+
 class Database
 {
     // property declaration
@@ -124,7 +126,7 @@ class Database
 		$this->open();
 		
 		//get random sur_id
-		// TODO: needs to be updated to support non-sequential exp_id's
+		// TODO: needs to evenly distribute the surveys
 		$sur_id = rand(1, $this->getNumberOfSurveys($exp_id));
 		
 		$result = sqlite_query($this->dbhandle, "SELECT * FROM survey WHERE exp_id='$exp_id' AND sur_id='$sur_id'");
@@ -178,14 +180,28 @@ class Database
 		
 		$result = sqlite_query($this->dbhandle, "SELECT * FROM question WHERE sur_id='$sur_id'");
 		if (!$result) die ("Cannot execute query.");
-		$row = "blank";
-		//var_dump($row);
+		$row = sqlite_fetch_array($result);
 		while ($row != null) {
+			$surveyQuestion = new SurveyQuestion(
+				$row['item_code'],
+				$row['item'],
+				$row['response_type']
+			);
+			$survey->addSurveyQuestion($surveyQuestion);
+			
 			$row = sqlite_fetch_array($result);
-			//var_dump($row);
-			$survey->surveyItemCodes[$row['que_id']] = $row['item_code'];
-			$survey->surveyItems[$row['que_id']] = $row['item'];
-			$survey->surveyResponseTypes[$row['que_id']] = $row['response_type'];
+		}
+		
+		$result = sqlite_query($this->dbhandle, "SELECT * FROM user_questions WHERE sur_id='$sur_id'");
+		if (!$result) die ("Cannot execute query.");
+		$row = sqlite_fetch_array($result);
+		while ($row != null) {
+			$userQuestion = new UserQuestion(
+				$row['question']
+			);
+			$survey->addUserQuestion($userQuestion);
+			
+			$row = sqlite_fetch_array($result);
 		}
 		
 		$this->close();

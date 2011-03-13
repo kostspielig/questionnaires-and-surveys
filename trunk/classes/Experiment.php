@@ -1,49 +1,51 @@
 <?php
+/**
+ * An experiment holds a set of surveys. Each survey holds a set of questions
+ * and survey properties (see Survey and Question classes).
+ * 
+ * @author Kevin Brotcke <brotcke@gmail.com>
+ * @package classes
+ * @uses PHPExcel, Survey, Question
+ */
+
 require_once '../includes/PHPExcel/IOFactory.php';
 require_once '../includes/classes.php';
 
-//TODO: check format, question spacing
-
 class Experiment {
 	
+	/**
+	 * @var Survey[]
+	 */
 	public $surveys = array();
 	
+	/**
+	 * @param String $filename
+	 * @return void
+	 */
 	public function loadExperimentFromExcelFile($filename) {
-		
 		if (!file_exists("../experiments/".$filename)) {
 			exit("Error: File ".$filename." does not exist.");
 		}
-		
 		$objPHPExcel = PHPExcel_IOFactory::load("../experiments/".$filename);
 		
-		$count = 0;
 		foreach ($objPHPExcel->getWorksheetIterator() as $worksheet) {
 			$survey = new Survey();
 			$survey->loadWorksheet($worksheet);
-			$this->surveys[$count] = $survey;
-			$count++;
+			$this->surveys[] = $survey;
 		}
-		
-		//var_dump(get_defined_vars());	
 	}
 	
-	// Incomplete
-	public function loadRandomSurveyFromDB($exp_id) {
-		$database = new Database();
-		$survey = $database->getFilename($exp_id);
-		
-		echo 'Test';
-		echo "<br/>$survey";
-	}
-	
-	// Incomplete
-	public function loadExperimentFromDB($exp_id) {
-		$database = new Database();
-		//$surveyList =
-
+	/**
+	 * @param String|Integer $exp_id
+	 * @return void
+	 */
+	public function loadExperimentFromDatabase($exp_id) {
 		
 	}
 	
+	public function toString() {
+		return var_export($this, TRUE);
+	}
 } 
 
 ?>
