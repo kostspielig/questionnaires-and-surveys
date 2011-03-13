@@ -44,6 +44,9 @@ a.delete {
 a.url {
 	background-image:url(url.png)
 }
+a.result {
+	background-image:url(download.png)
+}
 
 #head {
 	background:#313230

@@ -92,7 +92,7 @@ a:hover {
 	text-decoration:none;
 }
 
-a.edit, a.delete, a.url {
+a.edit, a.delete, a.url, a.result {
 	padding-left:25px;
 	background-repeat:no-repeat;
 	background-position:left center;

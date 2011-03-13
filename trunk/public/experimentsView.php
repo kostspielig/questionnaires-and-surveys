@@ -99,7 +99,7 @@ $(document).ready(function(){
 								<th>ID</th>
 								<th>Name</th>
 								<th>Owner</th>
-								<th colspan="3" width="10%">Actions</th>
+								<th colspan="4" width="10%">Actions</th>
 							</tr>
 						</thead>
 						<tfoot>
@@ -143,7 +143,8 @@ $(document).ready(function(){
 								echo'</td><td>'.$user->admin_id.'</td>';	
 								
 								echo '<td><a href="takeExperiment.php?exp_id='.$user->exp_id.'" class="url">URL</a></td> 
-									<td><a href="editExperiment.php?filename='.$user->filename.'" class="edit">Download</a></td> 
+									<td><a href="editExperiment.php?filename='.$user->filename.'" class="result">Download</a></td> 
+									<td><a href="#" class="edit">Results</a></td> 
 									<td><a href="#" class="delete">Delete</a><span class="delete-confirm-span">
 									 	<a href="deleteExperiment.php?id='.$user->exp_id.'" class="delete-confirm">Yes</a>
 									 	<a href="#" class="no-confirm-delete">No</a></span></td></tr>';
