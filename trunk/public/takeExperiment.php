@@ -28,8 +28,9 @@ if (($survey->surveyProperties['headerProperties_leftTitle'] != NULL || $survey-
 	echo $survey->surveyProperties['headerProperties_customHeader'];
 }
 
-$count = count($survey->surveyItems);
-for ($i=1; $i<$count; $i++) {
+$count = count($survey->surveyQuestions);
+for ($i=0; $i<$count; $i++) {
+	
 	//prints question
 	echo '<tr id="PHPSurveyGenerator_Survey_TableRow">';
 	echo '<td id="PHPSurveyGenerator_Survey_LeftTableColumn" ';
@@ -38,8 +39,7 @@ for ($i=1; $i<$count; $i++) {
 		if ($survey->surveyProperties['surveyLeftColumnProperties_borderThickness']) {echo 'border="',$survey->surveyProperties['surveyLeftColumnProperties_borderThickness'],'" ';}
 		if ($survey->surveyProperties['surveyLeftColumnProperties_padding']) {echo 'cellpadding="',$survey->surveyProperties['surveyLeftColumnProperties_padding'],'" ';}
 		if ($survey->surveyProperties['surveyLeftColumnProperties_spacing']) {echo 'cellspacing="',$survey->surveyProperties['surveyLeftColumnProperties_spacing'],'" ';}
-	echo '>',$survey->surveyItems[$i],'</td>';
-	
+	echo '>',$survey->surveyQuestions[$i]->item,'</td>';
 	
 	echo '<td id="PHPSurveyGenerator_Survey_RightTableColumn ';
 		if ($survey->surveyProperties['surveyRightColumnProperties_width']) {echo 'width="',$survey->surveyProperties['surveyRightColumnProperties_width'],'" ';}
@@ -47,19 +47,28 @@ for ($i=1; $i<$count; $i++) {
 		if ($survey->surveyProperties['surveyRightColumnProperties_borderThickness']) {echo 'border="',$survey->surveyProperties['surveyRightColumnProperties_borderThickness'],'" ';}
 		if ($survey->surveyProperties['surveyRightColumnProperties_padding']) {echo 'cellpadding="',$survey->surveyProperties['surveyRightColumnProperties_padding'],'" ';}
 		if ($survey->surveyProperties['surveyRightColumnProperties_spacing']) {echo 'cellspacing="',$survey->surveyProperties['surveyRightColumnProperties_spacing'],'" ';}
-	echo '">';		
+	echo '">';
+	
 	//prints type of response
-	if ($survey->surveyResponseTypes[$i] != 't') {
-		$selectBoxCount = $survey->surveyResponseTypes[$i];
+	if ($survey->surveyQuestions[$i]->responseType == ResponseType::YES_NO) {
+		echo '<input type="radio" value"Yes">Yes</input>';
+		echo '&nbsp&nbsp&nbsp';
+		echo '<input type="radio" value"No">No</input>';
+		echo '&nbsp&nbsp&nbsp';
+	}
+	else if ($survey->surveyQuestions[$i]->responseType == ResponseType::INPUT_BOX) {
+		echo '<input name="" type="text" value="" size="15" />';
+	}
+	else {
+		$selectBoxCount = $survey->surveyQuestions[$i]->responseType;
 		$value = 1;
 		for ( $j = 1; $j<=$selectBoxCount; $j++) {
 			echo '<input type="radio" value="',$value,'">',$j,'</input>';
 			echo '&nbsp&nbsp&nbsp';
 			$value++;
 		}
-	} else {
-		echo '<input name="" type="text" value="" size="15" />';
 	}
+	
 	echo '</td></tr>';
 }		
 

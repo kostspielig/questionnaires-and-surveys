@@ -44,7 +44,7 @@ class Experiment {
 	}
 	
 	public function toString() {
-		return var_export($this, TRUE);
+		return var_dump($this);
 	}
 } 
 
