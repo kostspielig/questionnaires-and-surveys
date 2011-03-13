@@ -366,7 +366,7 @@ class Database
 			
 		foreach ($exp->surveys as $sur) {
 			$sur_id = $this->insertSurvey("NULL,'".$exp_id."', '".$sur->surveyProperties['name']."', 
-			'".$sur->surveyProperties['surveyTableProperties_pseudoRandomWidth']."', '".$sur->surveyProperties['outputFilename']."', 
+			'".$sur->surveyProperties['surveyTableProperties_pseudoRandomWidth']."', '".$sur->surveyProperties['surveyTableProperties_numberNonRandom']."','".$sur->surveyProperties['outputFilename']."', 
 			'".$sur->surveyProperties['cssFilename']."', '".$sur->surveyProperties['thankYouPage']."', 
 			'".$sur->surveyProperties['surveyTableProperties_questionsPerPage']."', '".$sur->surveyProperties['surveyTableProperties_width']."', 
 			'".$sur->surveyProperties['surveyTableProperties_alignment']."', '".$sur->surveyProperties['surveyTableProperties_borderThickness']."', 
