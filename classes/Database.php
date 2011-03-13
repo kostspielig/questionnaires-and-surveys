@@ -125,14 +125,27 @@ class Database
 	public function	getRandomSurveyFromExperiment($exp_id){
 		$this->open();
 		
-		//get random sur_id
-		// TODO: needs to evenly distribute the surveys
-		$sur_id = rand(1, $this->getNumberOfSurveys($exp_id));
+		//get sur_id's
+		$surveys = array();
+		$result = sqlite_query($this->dbhandle, "SELECT * FROM survey WHERE exp_id='$exp_id'");
+		if (!$result) die ("Cannot execute query.");
+		$row = sqlite_fetch_array($result);
+		while ($row != null) {
+			$surveys[] = $row["sur_id"];
+			$row = sqlite_fetch_array($result);
+		}
+		
+		//pick one with lest reponses, then random
+		$sur_id = array_rand($surveys, 1);
+		
+		var_dump($sur_id);
+		echo '$sur_id: ',$sur_id;
 		
 		$result = sqlite_query($this->dbhandle, "SELECT * FROM survey WHERE exp_id='$exp_id' AND sur_id='$sur_id'");
 		if (!$result) die ("Cannot execute query.");
+		var_dump($result);
 		$row = sqlite_fetch_array($result);
-		//var_dump($row);
+		var_dump($row);
 		
 		$survey = new Survey();
 		$survey->surveyProperties["name"] = $row["name"];
@@ -314,19 +327,22 @@ class Database
 		
 			// Insert User Info Questions
 			$i = 0;
-			while ($i < count($sur->surveyUserInfo)) {
-				$this->createUserQuestion('NULL, "'.$sur_id.'","'.$sur->surveyUserInfo[$i].'"');
+			$userQuestionCount = count($sur->userQuestions);
+			while ($i < $userQuestionCount) {
+				$this->createUserQuestion('NULL, "'.$sur_id.'","'.$sur->userQuestions[$i]->userItem.'"');
 				$i++;
 			}
 			
 			$i = 0;
 			// Insert Questions in Survey
-			while ($i < count($sur->surveyItems)) {
+			$surveyItemsCount = count($sur->surveyQuestions);
+			while ($i < $surveyItemsCount) {
 				$this->insertQuestion ('NULL, "'.$sur_id.'",
-					"'.$sur->surveyItemCodes[$i].'", "'.$sur->surveyItems[$i].'", 
-					"'.$sur->surveyResponseTypes[$i].'"');
+					"'.$sur->surveyQuestions[$i]->itemCode.'", "'.$sur->surveyQuestions[$i]->item.'", 
+					"'.$sur->surveyQuestions[$i]->responseType.'"');
 				$i++;
-			}	
+			}
+			
 		}
 		
 		} catch (Exception $e) {
