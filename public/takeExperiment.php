@@ -119,6 +119,9 @@ $database = new Database();
 $survey = $database->getRandomSurveyFromExperiment($_GET['exp_id']);
 $_SESSION['survey'] = $survey;
 
+//$random = new SurveyRandomGenerator();
+//$random->isValid($survey);
+
 //var_dump(get_defined_vars());
 echo '<div id="myDiv">';
 
