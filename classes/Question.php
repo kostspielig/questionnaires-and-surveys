@@ -9,6 +9,8 @@
  * @package classes
  */
 class Question {
+	public $id;
+	
 	public function toString()
     {
     	return var_dump($this);
@@ -26,6 +28,7 @@ class SurveyQuestion extends Question {
 	public $item;
 	public $responseType;
 	public $response;
+	public $position;
 	
 	public function SurveyQuestion() {
 		// Allows for overloaded constructors

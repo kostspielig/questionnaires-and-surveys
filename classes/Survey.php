@@ -29,6 +29,8 @@ class Survey {
 	
 	const USER_QUESTION_START_LINE = 52;
 	public $date;
+	public $sur_id;
+	public $exp_id;
 	
 	public function Survey() {
 		$this->date = date('m/d/y h:ia');
@@ -50,6 +52,13 @@ class Survey {
 	 */
 	public function addUserQuestion($userQuestion) {
 		$this->userQuestions[] = $userQuestion;
+	}
+	
+	public function updateSurveyResponses($responses) {
+		$count = count($responses);
+		for ($i=0;$i<$count;$i++) {
+			$this->surveyQuestions[$i]->response = $responses[$i];
+		}
 	}
 	
 	/**
