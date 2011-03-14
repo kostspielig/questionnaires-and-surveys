@@ -3,7 +3,7 @@ require_once '../classes/Database.php';
 require_once '../classes/Experiment.php';
 
 
-$database = new Database();
+//$database = new Database();
 
 //
 //$survey->insertExperiment("NULL ,'jon', 'experimentA', 'FILENAME.xlsx'");
@@ -14,11 +14,14 @@ $database = new Database();
 //$e = new Experiment();
 //$e->loadExperimentFromExcelFile("Experiment A.xlsx");
 
-$database->createEmptySQLite();
+//$database->createEmptySQLite();
 //$database->createEmptySQLite3();
-$database->insertAdministrator('jon', 'admin');
+//$database->insertAdministrator('jon', 'admin');
 
-$database->printUser();
+//$database->printUser();
+$h = 'youtube.csv';
+echo $h;
+echo rtrim($h, ".csv");
 
 /*echo 'This is a trial<br/>';
 $m = date('m/d/y h:ia' );
