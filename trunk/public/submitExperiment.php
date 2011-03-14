@@ -13,7 +13,7 @@ $database = new Database();
 $sur_id = $survey->sur_id;
 $date = $survey->date;
 
-var_dump(get_defined_vars());
+//var_dump(get_defined_vars());
 
 //add new participant and return part_id
 $database->open();
@@ -33,10 +33,10 @@ $database->close();
 //$database->insertResults()
 
 
-$toReturn = var_dump($_POST);
-$toReturn += var_dump($survey->surveyQuestions);
+//$toReturn = var_dump($_POST);
+//$toReturn += var_dump($survey->surveyQuestions);
 
 
-echo $toReturn;
-//echo 'Survey submitted successfully.';
+//echo $toReturn;
+echo 'Survey submitted successfully.';
 ?>
