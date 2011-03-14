@@ -57,13 +57,13 @@ class Database
     // Using rowid it will autoincrement the ID :)
     public function insert ($table, $values) {
 		$stm = "INSERT INTO ". $table." VALUES( ".$values." )";
- 
+		
 		$ok = sqlite_exec($this->dbhandle, $stm);
 		if (!$ok){
 			throw new Exception("ERROR: Could not insert values into the table ".$table);
 			die("Cannot execute query");
 		}
- 
+		
 		//echo "Data successfully inserted.";
     }
     
@@ -83,8 +83,19 @@ class Database
     	return sqlite_last_insert_rowid($this->dbhandle);
     }
     
+    public function insertSurveyQuestionAnswer($values) {
+		$this->insert("answer", $values);
+    	return sqlite_last_insert_rowid($this->dbhandle);
+    }
+    
+	public function insertUserQuestionAnswer($values) {
+		$this->insert("user_answer", $values);
+    	return sqlite_last_insert_rowid($this->dbhandle);
+    }
+    
     public function insertParticipant($values) {
     	$this->insert("participant", $values);
+    	return sqlite_last_insert_rowid($this->dbhandle);
     }
     
     public function insertAdministrator ($name, $pass) {
@@ -136,8 +147,24 @@ class Database
 		}
 		
 		//pick ones with least reponses, then randomize
+		$minSurveys = array();
+		$minSurveys[] = current($surveys);
+		$surveyItem = next($surveys);
+		while ($surveyItem != null) {
+			$candidatesSurveyItem = $this->getNumberOfSurveyCandidates($surveyItem);
+			$candidatesCurrentMinSurvey = $this->getNumberOfSurveyCandidates(current($minSurveys));
+			if ($candidatesSurveyItem < $candidatesCurrentMinSurvey) {
+				$minSurveys = array();
+				$minSurveys[] = $surveyItem;
+			}
+			else if ($candidatesSurveyItem == $candidatesCurrentMinSurvey){
+				$minSurveys[] = $surveyItem;
+			}
+			
+			$surveyItem = next($surveys);
+		}
 		
-		$sur_id = $surveys[array_rand($surveys, 1)];
+		$sur_id = $minSurveys[array_rand($minSurveys, 1)];
 		
 		//var_dump($sur_id);
 		//echo '$sur_id: ',$sur_id;
@@ -155,7 +182,7 @@ class Database
 
 		$survey->surveyProperties["surveyTableProperties_questionsPerPage"] = $row["questions_per_page"];
 		$survey->surveyProperties["surveyTableProperties_pseudoRandomWidth"] = $row["pseudo_random_width"];
-		$survey->surveyProperties["surveyTableProperties_numberNonRandom"] = $row["numberNonRandom"]; //TODO check
+		$survey->surveyProperties["surveyTableProperties_numberNonRandom"] = $row["numberNonRandom"];
 		$survey->surveyProperties["surveyTableProperties_width"] = $row["table_width"];
 		$survey->surveyProperties["surveyTableProperties_alignment"] = $row["table_alignment"];
 		$survey->surveyProperties["surveyTableProperties_borderThickness"] = $row["table_border_thickness"];
@@ -201,6 +228,7 @@ class Database
 				$row['item'],
 				$row['response_type']
 			);
+			$surveyQuestion->id = $row['que_id'];
 			$survey->addSurveyQuestion($surveyQuestion);
 			
 			$row = sqlite_fetch_array($result);
@@ -213,12 +241,17 @@ class Database
 			$userQuestion = new UserQuestion(
 				$row['question']
 			);
+			$userQuestion->id = $row['user_question_id'];
 			$survey->addUserQuestion($userQuestion);
 			
 			$row = sqlite_fetch_array($result);
 		}
 		
 		$this->close();
+		
+		$survey->sur_id = $sur_id;
+		$survey->exp_id = $exp_id;
+		
 		return $survey;
 	}
 	
@@ -304,12 +337,12 @@ class Database
 		return ($row!=NULL)? $row['COUNT(exp_id)']:'0';
 	}
 	
-	//TODO
-	public function getNumberOfReponses($exp_id, $sur_id) {
-		$result = sqlite_query($this->dbhandle, "SELECT COUNT(an_id) FROM answer WHERE exp_id='$exp_id'");
+	public function getNumberOfSurveyCandidates($sur_id) {
+		//$result = sqlite_query($this->dbhandle, "SELECT COUNT(DISTINCT part_id) FROM participant WHERE sur_id ='$sur_id'");
+		$result = sqlite_query($this->dbhandle, "SELECT COUNT(part_id) FROM (SELECT DISTINCT part_id from participant WHERE sur_id ='$sur_id')");
 		if (!$result) die ("Cannot execute query.");
 		$row = sqlite_fetch_array($result);
-		return ($row!=NULL)? $row['COUNT(exp_id)']:'0';
+		return ($row!=NULL)? $row['COUNT(part_id)']:'0';
 	}
 	
 	public function getSurveys($exp_id) {
