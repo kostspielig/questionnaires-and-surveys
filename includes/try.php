@@ -16,7 +16,7 @@ $database = new Database();
 
 $database->createEmptySQLite();
 //$database->createEmptySQLite3();
-$database->insertAdministrator('jonny', 'admin');
+$database->insertAdministrator('jon', 'admin');
 
 $database->printUser();
 

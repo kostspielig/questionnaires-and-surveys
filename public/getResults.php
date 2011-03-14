@@ -13,7 +13,7 @@ $files_to_zip = $m->extractAnswersToCVS($exp_id, $filename);
 
 $file = '../results/'.$exp_id.'.zip';
 
-//Zip answer files 
+//Zip answer files
 $result = create_zip($files_to_zip, $file);
 if ($result) $success = 'Zip file with results successfully created';
 else $error = 'Could not create results file.';

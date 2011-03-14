@@ -92,8 +92,7 @@ function output_file($file, $name, $mime_type='')
 
 		while(!feof($file) &&
 		(!connection_aborted()) &&
-		($bytes_send<$new_length)
-		)
+		($bytes_send<$new_length))
 		{
 			$buffer = fread($file, $chunksize);
 			print($buffer); //echo($buffer); // is also possible
