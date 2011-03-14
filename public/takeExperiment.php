@@ -41,7 +41,7 @@ if (!isset($_GET['exp_id'])) {
             // DOM element for the form do this: 
             // var formElement = jqForm[0]; 
          
-            alert('About to submit: \n\n' + queryString); 
+            //alert('About to submit: \n\n' + queryString); 
          
             // here we could return false to prevent the form from being submitted; 
             // returning anything other than false will allow the form submit to continue 
@@ -62,10 +62,10 @@ if (!isset($_GET['exp_id'])) {
 		        if (!formData[i].value) { 
 		            //alert('Please enter a value for both Username and Password');
 		            alert('Missing Question #'+formData[i].name); 
-		            return true; 
+		            return false; 
 		        } 
 		    } 
-		    alert('All fields contain values.')
+		    //alert('All fields contain values.')
 		    
 		    
             
@@ -85,8 +85,8 @@ if (!isset($_GET['exp_id'])) {
             // property set to 'json' then the first argument to the success callback 
             // is the json data object returned by the server 
          
-            alert('status: ' + statusText + '\n\nresponseText: \n' + responseText + 
-                '\n\nThe output div should have already been updated with the responseText.'); 
+            //alert('status: ' + statusText + '\n\nresponseText: \n' + responseText + 
+            //    '\n\nThe output div should have already been updated with the responseText.'); 
         } 
         
     </script> 
@@ -112,26 +112,6 @@ if (!isset($_GET['exp_id'])) {
 
 
 <?php
-
-if (isset($_GET['submit'])) {
-	echo 'SUCCESS';
-	return;
-	//var_dump($_POST);
-	//var_dump(get_defined_vars());
-	$survey = $_SESSION['survey'];
-	var_dump($survey->surveyQuestions);
-	var_dump($_GET['submit']);
-	if (count($_GET['submit']) != count($survey->surveyQuestions)) {
-		echo 'NOT DONE';
-	}
-	else {
-		echo 'Survey submitted successfully. Thank you.';
-		die;
-	}
-}
-
-// INCOMPLETE:
-// This page will control process to take experiment and get random survey.
 
 require_once '../includes/classes.php';
 
@@ -208,6 +188,7 @@ for ($i=0; $i<$count; $i++) {
 	echo '</td></tr>';
 }		
 echo '</table>';
+echo '<br/>';
 echo '<div id="pageNavPosition"></div>';
 echo '<div><input type="submit" /></div>';
 echo '</form>';

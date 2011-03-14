@@ -14,7 +14,7 @@ function Pager(tableName, itemsPerPage) {
             else
                 rows[i].style.display = '';
         }
-    }
+    };
     
     this.showPage = function(pageNumber) {
     	if (! this.inited) {
@@ -32,25 +32,25 @@ function Pager(tableName, itemsPerPage) {
         var from = (pageNumber - 1) * itemsPerPage + 1;
         var to = from + itemsPerPage - 1;
         this.showRecords(from, to);
-    }   
+    };  
     
     this.prev = function() {
         if (this.currentPage > 1)
             this.showPage(this.currentPage - 1);
-    }
+    };
     
     this.next = function() {
         if (this.currentPage < this.pages) {
             this.showPage(this.currentPage + 1);
         }
-    }                        
+    };                       
     
     this.init = function() {
         var rows = document.getElementById(tableName).rows;
         var records = (rows.length - 1); 
         this.pages = Math.ceil(records / itemsPerPage);
         this.inited = true;
-    }
+    };
 
     this.showPageNav = function(pagerName, positionId) {
     	if (! this.inited) {
@@ -65,6 +65,6 @@ function Pager(tableName, itemsPerPage) {
         pagerHtml += '<span onclick="'+pagerName+'.next();" class="pg-normal"> Next &#187;</span>';            
         
         element.innerHTML = pagerHtml;
-    }
+    };
 }
 
