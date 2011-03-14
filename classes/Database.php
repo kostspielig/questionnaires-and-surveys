@@ -313,10 +313,29 @@ class Database
 	
 	public function deleteExperiment($exp_id) {
 		$this->open();
-		$result = sqlite_query($this->dbhandle,"DELETE FROM experiment WHERE exp_id = '$exp_id'");
-		if (!$result) die("Cannot execute delete query.");
+		$res1 = sqlite_query($this->dbhandle, "SELECT * FROM survey WHERE exp_id = '$exp_id'");
+		if (!$res1) die ("Cannot execute select query");
+		while ($sur = sqlite_fetch_object($res1)) {
+			$res2 = sqlite_query($this->dbhandle,"DELETE FROM question WHERE sur_id = '$sur->sur_id'");
+			if (!$res2) die("Cannot execute delete query.");
+			$res2 = sqlite_query($this->dbhandle,"DELETE FROM user_questions WHERE sur_id = '$sur->sur_id'");
+			if (!$res2) die("Cannot execute delete query.");
+			$res3 = sqlite_query($this->dbhandle, "SELECT * FROM participant WHERE sur_id = '$sur->sur_id'");
+			if (!$res3) die("Cannot execute select query");
+			while ($par = sqlite_fetch_object($res3)) {
+				$res4 = sqlite_query($this->dbhandle,"DELETE FROM answer WHERE part_id = '$par->part_id'");
+				if (!$res4) die("Cannot execute select query");
+				$res4 = sqlite_query($this->dbhandle,"DELETE FROM user_answer WHERE part_id = '$par->part_id'");
+				if (!$res4) die("Cannot execute select query");
+			}
+			$res2 = sqlite_query($this->dbhandle,"DELETE FROM participant WHERE sur_id = '$sur->sur_id'");
+			if (!$res2) die("Cannot execute delete query.");
+		}
 		$result = sqlite_query($this->dbhandle,"DELETE FROM survey WHERE exp_id = '$exp_id'");
 		if (!$result) die("Cannot execute delete query.");
+		
+		$res0 = sqlite_query($this->dbhandle,"DELETE FROM experiment WHERE exp_id = '$exp_id'");
+		if (!$res0) die("Cannot execute delete query.");
 		$this->close();
 		return "success";
 	}

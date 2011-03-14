@@ -46,10 +46,10 @@ $(document).ready(function(){
 					<div class="grid_16">
 					
 					<?php
-						if (isset($error))
-							echo '<p class="error">'.$error.'</p>';
-						else if (isset($success))
-							echo '<p class="success">'.$success.'</p>';
+						if (isset($_GET['error']))
+							echo '<p class="error">'.$_GET['error'].'</p>';
+						else if (isset($_GET['success']))
+							echo '<p class="success">'.$_GET['success'].'</p>';
 						unset($error, $success);
 					?></div>
 

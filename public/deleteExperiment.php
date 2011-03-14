@@ -19,8 +19,12 @@ if ($filename != '0') {
 }else  {
 	$error = "Could not delete selected experiment's file." ;
 }
-
-include 'experimentsView.php';
+if ($s == "success")
+	header("Location: experimentsView.php?success=$success");
+else 
+	header("Location: experimentsView.php?error=$error");
+exit();
+//include 'experimentsView.php';
 
 
 ?>

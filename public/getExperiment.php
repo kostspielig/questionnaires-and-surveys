@@ -29,7 +29,7 @@ if ($_FILES["file"]["type"] == "application/vnd.openxmlformats-officedocument.sp
 			$e = $database->uploadExperiment($experiment, $_POST['name'], $_FILES["file"]["name"], $_SESSION['login']);
 			if ($e != null)
 				$error = $e;
-			
+			$s = 'success';
 			$success = 'File '.$_FILES["file"]["name"].' uploaded correctly';
 		}
     }
@@ -38,5 +38,10 @@ else {
 	$error = "Invalid file. The correct format is .xslx ";
 }
 
-include'experimentsView.php';
+if ($s == "success")
+	header("Location: experimentsView.php?success=$success");
+else 
+	header("Location: experimentsView.php?error=$error");
+exit();
+//include'experimentsView.php';
 ?> 
