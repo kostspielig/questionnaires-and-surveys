@@ -23,6 +23,12 @@ $h = 'youtube.csv';
 echo $h;
 echo rtrim($h, ".csv");
 
+$l = array();
+$l [] = 'hola';
+print_r( $l);
+$l = array();
+print_r( $l);
+
 /*echo 'This is a trial<br/>';
 $m = date('m/d/y h:ia' );
 echo $m;

@@ -12,6 +12,9 @@ if (!isset($_GET['exp_id'])) {
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
+		<link rel="stylesheet" href="css/960.css" type="text/css" media="screen" charset="utf-8" />
+		<link rel="stylesheet" href="css/template.css" type="text/css" media="screen" charset="utf-8" />
+		<link rel="stylesheet" href="css/colour.css" type="text/css" media="screen" charset="utf-8" />
 <script type="text/javascript" src="js/jquery.js"></script> 
     <script type="text/javascript" src="js/jquery.form.js"></script> 
  
