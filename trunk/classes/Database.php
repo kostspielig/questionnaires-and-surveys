@@ -270,7 +270,6 @@ class Database
 
 		$list = array();
 		$files = array();
-		
 		while($sur = sqlite_fetch_object($result))
 		{
 			$title = '../results/'.$name.'_'.$sur->name.'.csv';
@@ -280,6 +279,9 @@ class Database
 			$res2 = sqlite_query($this->dbhandle,"SELECT * FROM participant WHERE sur_id = $sur->sur_id");
 			if (!$res2) die("Cannot execute query.");  
 			$i = 1;
+			$list = array();
+			$list[] = array('subject identifier', 'date/time','presentation number', 'item code', 'response');		
+			
 			while($par = sqlite_fetch_object($res2)) {
 				//print user personal answers
 				/*$res3 = sqlite_query($this->dbhandle, "SELECT * FROM user_answer WHERE part_id = $par->part_id");
