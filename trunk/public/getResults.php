@@ -25,7 +25,7 @@ if ($result) {
 }
 else $error = 'Could not create results file.';
 
-
+$filename = $filename.'.zip';
 //Output file
 //set_time_limit(0);
 output_file($file, $filename, "application/zip");
