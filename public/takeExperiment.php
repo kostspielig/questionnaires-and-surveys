@@ -27,15 +27,15 @@ if (!isset($_GET['exp_id'])) {
                		target: '#myDiv',
         	     beforeSubmit:  showRequest,  // pre-submit callback 
         	     success:       showResponse  // post-submit callback 
-
         	 }; 
-        	  
+          	  
         	 // pass options to ajaxForm 
         	 $('#myForm').ajaxForm(options);
         }); 
 
      // pre-submit callback 
         function showRequest(formData, jqForm, options) { 
+        	//$("#mySubmit").attr("disabled", true);	
             // formData is an array; here we use $.param to convert it to a string to display it 
             // but the form plugin does this for you automatically when it submits the data 
             var queryString = $.param(formData); 
@@ -65,7 +65,8 @@ if (!isset($_GET['exp_id'])) {
 		        if (!formData[i].value) { 
 		            //alert('Please enter a value for both Username and Password');
 		            alert('Missing Question #'+formData[i].name); 
-		            return false; 
+		            return false;
+		            //$("#mySubmit").removeAttr("disabled"); 
 		        } 
 		    } 
 		    //alert('All fields contain values.')
@@ -151,7 +152,7 @@ if (($survey->surveyProperties['headerProperties_leftTitle'] != NULL || $survey-
 $count = count($survey->surveyQuestions);
 for ($i=0; $i<$count; $i++) {
 	//TODO record position
-	$survey->surveyQuestions[$i]->position = $i;
+	$survey->surveyQuestions[$i]->position = ($i+1);
 	
 	//prints question
 	echo '<tr id="PHPSurveyGenerator_Survey_TableRow">';
@@ -196,12 +197,21 @@ for ($i=0; $i<$count; $i++) {
 echo '</table>';
 echo '<br/>';
 echo '<div id="pageNavPosition"></div>';
-echo '<div><input type="submit" /></div>';
+echo '<br/>';
+echo '<div><input id="mySubmit" type="submit" /></div>';
+?>
+<p>Some Text.</p>
+<script type="text/javascript">
+
+</script>
+<?php
 echo '</form>';
 echo '</div>';
 //var_dump(get_defined_vars());
 //var_dump($survey);
 ?>
+
+
 
 <script type="text/javascript"><!--
 	var pager = new Pager('myTable', <?php echo $survey->surveyProperties['surveyTableProperties_questionsPerPage'] ?>); 
