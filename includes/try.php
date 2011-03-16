@@ -16,7 +16,7 @@ require_once '../classes/Experiment.php';
 
 //$database->createEmptySQLite();
 //$database->createEmptySQLite3();
-//$database->insertAdministrator('jon', 'admin');
+//$database->insertAdministrator('admin', 'admin');
 
 //$database->printUser();
 $h = 'youtube.csv';
@@ -28,8 +28,6 @@ $l [] = 'hola';
 print_r( $l);
 $l = array();
 print_r( $l);
-echo 'UNLINK:';
-echo unlink('../results/');
 
 /*echo 'This is a trial<br/>';
 $m = date('m/d/y h:ia' );
