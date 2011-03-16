@@ -28,6 +28,8 @@ $l [] = 'hola';
 print_r( $l);
 $l = array();
 print_r( $l);
+echo 'UNLINK:';
+echo unlink('../results/');
 
 /*echo 'This is a trial<br/>';
 $m = date('m/d/y h:ia' );
