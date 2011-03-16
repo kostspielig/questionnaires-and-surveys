@@ -44,7 +44,7 @@ if (!isset($_GET['exp_id'])) {
             // DOM element for the form do this: 
             // var formElement = jqForm[0]; 
          
-            //alert('About to submit: \n\n' + queryString); 
+            alert('About to submit: \n\n' + queryString); 
          
             // here we could return false to prevent the form from being submitted; 
             // returning anything other than false will allow the form submit to continue 
@@ -123,8 +123,8 @@ $database = new Database();
 $survey = $database->getRandomSurveyFromExperiment($_GET['exp_id']);
 $_SESSION['survey'] = $survey;
 
-//$random = new SurveyRandomGenerator();
-//$random->isValid($survey);
+$random = new SurveyRandomGenerator();
+$survey = $random->randomize($survey);
 
 //var_dump(get_defined_vars());
 echo '<div id="myDiv">';
@@ -193,7 +193,8 @@ for ($i=0; $i<$count; $i++) {
 	}
 	
 	echo '</td></tr>';
-}		
+}
+
 echo '</table>';
 echo '<br/>';
 echo '<div id="pageNavPosition"></div>';
