@@ -35,7 +35,7 @@ if (!isset($_GET['exp_id'])) {
 
      // pre-submit callback 
         function showRequest(formData, jqForm, options) { 
-        	//$("#mySubmit").attr("disabled", true);	
+        	$("#mySubmit").attr("disabled", true);	
             // formData is an array; here we use $.param to convert it to a string to display it 
             // but the form plugin does this for you automatically when it submits the data 
             var queryString = $.param(formData); 
@@ -65,8 +65,8 @@ if (!isset($_GET['exp_id'])) {
 		        if (!formData[i].value) { 
 		            //alert('Please enter a value for both Username and Password');
 		            alert('Missing Question #'+formData[i].name); 
+		            $("#mySubmit").removeAttr("disabled"); 
 		            return false;
-		            //$("#mySubmit").removeAttr("disabled"); 
 		        } 
 		    } 
 		    //alert('All fields contain values.')
@@ -199,12 +199,6 @@ echo '<br/>';
 echo '<div id="pageNavPosition"></div>';
 echo '<br/>';
 echo '<div><input id="mySubmit" type="submit" /></div>';
-?>
-<p>Some Text.</p>
-<script type="text/javascript">
-
-</script>
-<?php
 echo '</form>';
 echo '</div>';
 //var_dump(get_defined_vars());
@@ -220,11 +214,6 @@ echo '</div>';
 	pager.showPage(1);
 //--></script>
 
-
-</body>
-</html>
-
-    
 
 </body>
 </html>
