@@ -19,14 +19,14 @@ $date = $survey->date;
 $database->open();
 $part_id = $database->insertParticipant('NULL, "'.$sur_id.'", "pName"');
 
-reset($survey->surveyQuestions);
-$currentSurveyQuestion = current($survey->surveyQuestions);
-while ($currentSurveyQuestion != null) {
+$questions = $survey->surveyQuestions;
+$currentQuestion = current($questions);
+while ($currentQuestion != null) {
 	$database->insertSurveyQuestionAnswer('NULL, "'.$part_id.'",
-		"'.$currentSurveyQuestion->id.'", 
-		"'.$currentSurveyQuestion->response.'", "'.$date.'", 
-		"'.$currentSurveyQuestion->position.'"');
-	$currentSurveyQuestion = next($survey->surveyQuestions);
+		"'.$currentQuestion->id.'", 
+		"'.$currentQuestion->response.'", "'.$date.'", 
+		"'.$currentQuestion->position.'"');
+	$currentQuestion = next($questions);
 }
 $database->close();
 

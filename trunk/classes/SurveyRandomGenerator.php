@@ -40,7 +40,7 @@ class SurveyRandomGenerator {
 		echo 'START';
 		$questions = $this->array_permutations($questions);
 		echo 'END';
-		echo var_dump($question);
+		echo var_dump($questions);
 		
 		if (!isset($width) || $width == 0) {
 			return true;
