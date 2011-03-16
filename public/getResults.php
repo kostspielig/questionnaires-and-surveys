@@ -28,7 +28,7 @@ else $error = 'Could not create results file.';
 
 //Output file
 //set_time_limit(0);
-output_file($file, $filename, "zip");
+output_file($file, $filename, "application/zip");
 
 
 
