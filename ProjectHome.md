@@ -1,0 +1,2 @@
+Web-based survey system that contains customizable functionalities during survey creation, multiple version creation, and allow for survey participation.
+Multiple versions allow for the juxtaposition and analysis of participant responses with the use of “same-content, different-layout” environments.
